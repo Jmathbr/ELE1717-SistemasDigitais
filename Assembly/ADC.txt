@@ -1,0 +1,33 @@
+;
+; ADC.asm
+;
+; Created: 16/07/2021 22:09:55
+; Author : joaom
+;
+
+
+; Replace with your application code
+
+start:
+	ldi r16, 0xff
+	out DDRB, r16
+
+    ldi r16,0x40		;0100 - AVC, 0000 - ADC0 PC0 
+	sts ADMUX, R16		;ADMUX - referencia e porta
+	
+	ldi r17, 0xE7		;1000 - 0N, 0111 - ADPS(3 bits) 
+	sts ADCSRA, r17		;ADCSRA - Habilitador e prescale 
+
+	;sts didr0, 
+
+	lds r20,ADCL		;Salve copias dos valores lidos
+	lds r21,ADCH
+	
+	
+	out PORTB, r20
+	;out PORTB, 0X3C
+	
+
+
+
+    rjmp start

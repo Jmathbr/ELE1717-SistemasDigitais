@@ -1,0 +1,20 @@
+.include "m328pdef.inc"
+.org 0x0000     ; A próxima instrunção será escrita em 0x0000
+
+rjmp main     ; salte para main:
+
+
+main:
+	
+    sbi DDRD, 6			;Ativar pino como saida (1)
+	;sbi PORTD, 6
+
+    ldi r21, 0x83		;guarde 1010 0011 dentro de R21 
+	sts 0x44, r21		;TCCR0A - Fast PWM 
+	
+	ldi r21, 0x03		;guarde 1010 0011 dentro de R21 
+	sts 0x45, r21		;TCCR0B 
+    
+	ldi r19, 0x7f		;32 - 50, 7F - 127, FF - 255
+    out OCR0A, r19		;controla o duty cicle 50% 127 0x7F
+

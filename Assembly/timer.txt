@@ -1,0 +1,21 @@
+.include "m328pdef.inc"
+.org 0x0000     ; A próxima instrunção será escrita em 0x0000
+rjmp main         ; salte para main:
+
+
+
+main:
+
+    ldi r18, 0x0D
+    sts TCCR1B, r18
+
+    ldi    r17, 0x1E        ;definindo o valor de TOP
+    ldi    r16, 0x84
+    sts    OCR1AH, r17
+    sts    OCR1AL, r16
+    nop
+
+loop:
+
+    rjmp loop
+timer ^
