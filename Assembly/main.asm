@@ -73,7 +73,7 @@ Setup:
 
     ldi r16, 0x05				; Ligar o timer, 0x05 Desativar
     sts TCCR1B, r16				; Configurar o timer
-	cbi TIFR1, 1
+	sbi TIFR1, 1
 
 	rjmp Close
 
@@ -95,13 +95,7 @@ ajuste:
 	ldi soma, 0x00
 	ldi subt, 0x00
 
-	;ldi r16, 0x0D				; Ligar o timer, 0x05 Desativar, 0x0D LIGAR
-    ;sts TCCR1B, r16				; Configurar o timer
-	clr r16
-	sts TCNT1H, r16 
-	sts TCNT1L, r16 
-	sts TIFR1, r16
-	;ldi r16, (1 << TOV2) | (1 << OCF2A) | (1 << OCF2B)
+	sbi TIFR1, 1
 
 	cbi PORTB, 5				; Desliga led Vermelho
 	sbi PORTB, 4				; Liga led azul
@@ -164,7 +158,7 @@ timer:
 	ldi r16, 0x84
 	sts OCR1AL, r16				; definindo o valor de TOP - LOW
 	
-	sbis TIFR1, 2				; TIFR1 - Quando o contador estourar, bit 1 = 1 
+	sbis TIFR1, 1				; TIFR1 - Quando o contador estourar, bit 1 = 1 
 	rjmp timer
 	
 	cpi cont, 0x03				; compara se ja esta na terceira senha
