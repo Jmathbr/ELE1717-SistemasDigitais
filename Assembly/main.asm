@@ -42,6 +42,8 @@ Setup:
 	Sbi DDRB, 5					; Defina como porta de saida
 	Sbi DDRB, 7					; Defina como porta de saida
 	
+	sbi DDRC, 3					; Acionamento dos bits bcd
+	sbi DDRC, 4					; Acionamento dos bits bcd
 	sbi DDRC, 5					; Porta para acionamento do mux
 	sbi DDRC, 6					; Porta para acionamento do mux
 
@@ -75,10 +77,10 @@ Setup:
     ldi r16, 0x0D				; Ligar o timer, 0x05 Desativar
     sts TCCR1B, r16				; Configurar o timer
 	
-	ldi r16, 0x00;0x1E        
+	ldi r16, 0x1E        
     sts OCR1AH, r16				; definindo o valor de TOP - HIGH
 	
-	ldi r16, 0x0A;0x84
+	ldi r16, 0x84
 	sts OCR1AL, r16				; definindo o valor de TOP - LOW
 
 	;sbi TIFR1, 1				; Limpar Flag do timer
@@ -89,7 +91,7 @@ Setup:
 Close:
 	sbi PORTB, 5				; Liga led Vermelho
 	cbi PORTB, 4				; Desliga led azul
-	cbi PORTB, 3				; Desliga led verde
+	;cbi PORTB, 3				; Desliga led verde
 	sts OCR2A, PWM_valueL
 	cbi	PORTB, 7				; Tranca fechada
 	
@@ -105,7 +107,7 @@ ajuste:
 	
 	cbi PORTB, 5				; Desliga led Vermelho
 	sbi PORTB, 4				; Liga led azul
-	cbi PORTB, 3				; Desliga led verde
+	;cbi PORTB, 3				; Desliga led verde
 	sts OCR2A, PWM_valueL
 	cbi	PORTB, 7				; Tranca fechada
 
@@ -114,12 +116,13 @@ ajuste:
 
 	;lendo adc
 	lds ADCL_aux ,ADCL			; Salve copias dos valores lidos
-	lds r16 ,ADCH
-	lsl r16
-	lsl r16
+	lds r16 ,ADCH				; salve dentro de r16
+	lsl r16						; 00000110
+	lsl r16						; 00001100
+	lsl r16						
 	mov ADCH_aux, r16
 	
-	cpi	ADCH_aux, 0x0C
+	cpi	ADCH_aux, 0x18
 	breq Map
 
 	out PORTD, ADCL_aux			; saida de 8 bits BCD (8 bits)
@@ -179,7 +182,7 @@ VP3:
 	rjmp timer
 
 Map:							; Forçar que qualquer valor maior que 999 seja 999
-	cpi ADCL_aux, 0xE7			; Compara para ver se é maior que 1000
+	cpi ADCL_aux, 0xE7			; Compara para ver se é maior igual a 999
 	brsh Force					; Caso o valor seja >=
 
 	out PORTD, ADCL_aux			; saida de 8 bits BCD (8 bits)
@@ -202,8 +205,6 @@ timer:
 	cbi PORTB, 4				; Liga led azul
 	sbi PORTB, 5				; Desliga led Vermelho
 
-	
-	
 	sbis TIFR1, 1				; TIFR1 - Quando o contador estourar, bit 1 = 1 
 	rjmp timer
 	
@@ -244,13 +245,18 @@ Read_BA_ajuste:
 	rjmp verificar
 	rjmp Read_BA_ajuste
 
-
-
 Force:
 	ldi ADCL_aux, 0xE7			; Forçe o valor 999 no Registrador
 	out PORTD, ADCL_aux			; Saida de 8 bits BCD (8 bits)
 	out PORTC, ADCH_aux			; Saida de 8 bits BCD (2 bits) 
-	rjmp ajuste					; Volte para ajuste
+	
+	sbic PINC, 2				; ADD Verifique se o pino ta em alto, true = salto
+	rjmp Read_BA_ajuste
+	nop
+
+	sbis PINC, 1				; Power Verifique se o pino ta em alto, true = salto
+	rjmp ajuste
+	rjmp Read_BP_Close
 
 errou:
 	ldi pass, 0x01				; Seta qualquer bit para 1
