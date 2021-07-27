@@ -160,7 +160,7 @@ begin
     FF6:  FFD port map(D(6), clr, clk, Q(6),  NQ(6));
     FF7:  FFD port map(D(7), clr, clk, Q(7),  NQ(7));
 
-    -- saida
+    -- saida a
     O <= Q;
  
 end hardware;
