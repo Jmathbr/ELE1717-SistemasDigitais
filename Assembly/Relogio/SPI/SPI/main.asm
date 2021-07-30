@@ -26,16 +26,23 @@ Loop:
 	ldi r16, 0x81
 	out SPDR, r16				; Request Seconds
 
-Wait_Transmit:					; Wait 8 pulses clock 
+Wait_Transmit_send:				; Wait 8 pulses clock 
 	in   r16, SPSR				;
 	sbrs r16, SPIF				; Verify Flag interrupt
-	rjmp Wait_Transmit			; Ao final grava o valor recebido no SPDR
-	rjmp Output							
+	rjmp Wait_Transmit_send		; Ao final grava o valor recebido no SPDR
+	rjmp Wait_Transmit_recive							
+
+; Necessita que o SPIF seja limpo
+Wait_Transmit_recive:			; Wait 8 pulses clock 
+	in   r16, SPSR				;
+	sbrs r16, SPIF				; Verify Flag interrupt
+	rjmp Wait_Transmit_recive
+	rjmp Output					; Ao final grava o valor recebido no SPDR
 
 Output:
 	lds r16, 0X4E				; Write value SPDR in R16
 	out PORTD, r16
-	sbi PORTB, 2
+	sbi PORTB, 2				;Nao sei se isso ta certo
 	rjmp loop
 
 ;	Spi_Transmiter:
