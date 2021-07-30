@@ -4,12 +4,13 @@
 ; Created: 29/07/2021 12:17:05
 ; Author : joaom
 ;
-
+.def read = r18
 
 ; Replace with your application code
 Setup:
-	ldi r16, 0x80
-	out SREG, r16
+	
+	ldi r16, 0xFF			
+	out DDRD, r16				; Configurando todas as portas como saida
 
 	sbi DDRB, 2					; SS   - Slave select
 	sbi DDRB, 3					; MOSI - Master output Slave input
@@ -19,16 +20,23 @@ Setup:
 	ldi r16, 0xDC				; SPI CONTROL -> 
 								; 0xDC -> (SPIE,SPE,MSTR,CPOL,CPHA)
 								; 0x1C -> (MSTR,CPOL,CPHA)
-	out SPCR, r16				
-	ldi r19,SPDR
+	out SPCR, r16				; Configuration
 
-Spi_Transmiter:
-	ldi r16, 0x3				; Request Minutes
-	out SPDR, r16
+Loop:
+	ldi r16, 0x81
+	out SPDR, r16				; Request Seconds
 
-Wait_Transmit:
-	in r16, SPSR	
+Wait_Transmit:					; Wait 8 pulses clock 
+	in   r16, SPSR				;
 	sbrs r16, SPIF				; Verify Flag interrupt
-	rjmp Wait_Transmit	
-	ret
+	rjmp Wait_Transmit			; Ao final grava o valor recebido no SPDR
+	rjmp Output							
 
+Output:
+	ldi r16, SPDR
+	out PORTD, r16
+	rjmp loop
+
+;	Spi_Transmiter:
+;	ldi r16, 0x03				; Request Minutes
+;	out SPDR, r16

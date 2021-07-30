@@ -1,5 +1,5 @@
 
-AVRASM ver. 2.2.8  C:\Users\joaom\OneDrive\Documentos\GitHub\SD\Assembly\Relogio\SPI\SPI\main.asm Thu Jul 29 21:00:25 2021
+AVRASM ver. 2.2.8  C:\Users\joaom\OneDrive\Documentos\GitHub\SD\Assembly\Relogio\SPI\SPI\main.asm Thu Jul 29 22:32:35 2021
 
 [builtin](2): Including file 'C:/Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.6.364\avrasm\inc\m328Pdef.inc'
 [builtin](2): Including file 'C:/Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.6.364\avrasm\inc\m328Pdef.inc'
@@ -990,12 +990,13 @@ AVRASM ver. 2.2.8  C:\Users\joaom\OneDrive\Documentos\GitHub\SD\Assembly\Relogio
                                  ; Created: 29/07/2021 12:17:05
                                  ; Author : joaom
                                  ;
-                                 
+                                 .def read = r18
                                  
                                  ; Replace with your application code
                                  Setup:
-000000 e800                      	ldi r16, 0x80
-000001 bf0f                      	out SREG, r16
+                                 	
+000000 ef0f                      	ldi r16, 0xFF			
+000001 b90a                      	out DDRD, r16				; Configurando todas as portas como saida
                                  
 000002 9a22                      	sbi DDRB, 2					; SS   - Slave select
 000003 9a23                      	sbi DDRB, 3					; MOSI - Master output Slave input
@@ -1005,19 +1006,26 @@ AVRASM ver. 2.2.8  C:\Users\joaom\OneDrive\Documentos\GitHub\SD\Assembly\Relogio
 000006 ed0c                      	ldi r16, 0xDC				; SPI CONTROL -> 
                                  								; 0xDC -> (SPIE,SPE,MSTR,CPOL,CPHA)
                                  								; 0x1C -> (MSTR,CPOL,CPHA)
-000007 bd0c                      	out SPCR, r16				
-000008 e23e                      	ldi r19,SPDR
+000007 bd0c                      	out SPCR, r16				; Configuration
                                  
-                                 Spi_Transmiter:
-000009 e003                      	ldi r16, 0x3				; Request Minutes
-00000a bd0e                      	out SPDR, r16
+                                 Loop:
+000008 e801                      	ldi r16, 0x81
+000009 bd0e                      	out SPDR, r16				; Request Seconds
                                  
-                                 Wait_Transmit:
-00000b b50d                      	in r16, SPSR	
-00000c ff07                      	sbrs r16, SPIF				; Verify Flag interrupt
-00000d cffd                      	rjmp Wait_Transmit	
-00000e 9508                      	ret
+                                 Wait_Transmit:					; Wait 8 pulses clock 
+00000a b50d                      	in   r16, SPSR				;
+00000b ff07                      	sbrs r16, SPIF				; Verify Flag interrupt
+00000c cffd                      	rjmp Wait_Transmit			; Ao final grava o valor recebido no SPDR
+00000d c000                      	rjmp Output							
                                  
+                                 Output:
+00000e e20e                      	ldi r16, SPDR
+00000f b90b                      	out PORTD, r16
+000010 cff7                      	rjmp loop
+                                 
+                                 ;	Spi_Transmiter:
+                                 ;	ldi r16, 0x03				; Request Minutes
+                                 ;	out SPDR, r16
 
 
 RESOURCE USE INFORMATION
@@ -1037,10 +1045,10 @@ counted separately from r26..r31 here.
 "ATmega328P" register use summary:
 x  :   0 y  :   0 z  :   0 r0 :   0 r1 :   0 r2 :   0 r3 :   0 r4 :   0 
 r5 :   0 r6 :   0 r7 :   0 r8 :   0 r9 :   0 r10:   0 r11:   0 r12:   0 
-r13:   0 r14:   0 r15:   0 r16:   8 r17:   0 r18:   0 r19:   1 r20:   0 
+r13:   0 r14:   0 r15:   0 r16:  10 r17:   0 r18:   0 r19:   0 r20:   0 
 r21:   0 r22:   0 r23:   0 r24:   0 r25:   0 r26:   0 r27:   0 r28:   0 
 r29:   0 r30:   0 r31:   0 
-Registers used: 2 out of 35 (5.7%)
+Registers used: 1 out of 35 (2.9%)
 
 "ATmega328P" instruction use summary:
 .lds  :   0 .sts  :   0 adc   :   0 add   :   0 adiw  :   0 and   :   0 
@@ -1055,19 +1063,19 @@ cpi   :   0 cpse  :   0 dec   :   0 eor   :   0 fmul  :   0 fmuls :   0
 fmulsu:   0 icall :   0 ijmp  :   0 in    :   1 inc   :   0 jmp   :   0 
 ld    :   0 ldd   :   0 ldi   :   4 lds   :   0 lpm   :   0 lsl   :   0 
 lsr   :   0 mov   :   0 movw  :   0 mul   :   0 muls  :   0 mulsu :   0 
-neg   :   0 nop   :   0 or    :   0 ori   :   0 out   :   3 pop   :   0 
-push  :   0 rcall :   0 ret   :   1 reti  :   0 rjmp  :   1 rol   :   0 
+neg   :   0 nop   :   0 or    :   0 ori   :   0 out   :   4 pop   :   0 
+push  :   0 rcall :   0 ret   :   0 reti  :   0 rjmp  :   3 rol   :   0 
 ror   :   0 sbc   :   0 sbci  :   0 sbi   :   3 sbic  :   0 sbis  :   0 
 sbiw  :   0 sbr   :   0 sbrc  :   0 sbrs  :   1 sec   :   0 seh   :   0 
 sei   :   0 sen   :   0 ser   :   0 ses   :   0 set   :   0 sev   :   0 
 sez   :   0 sleep :   0 spm   :   0 st    :   0 std   :   0 sts   :   0 
 sub   :   0 subi  :   0 swap  :   0 tst   :   0 wdr   :   0 
-Instructions used: 8 out of 113 (7.1%)
+Instructions used: 7 out of 113 (6.2%)
 
 "ATmega328P" memory use summary [bytes]:
 Segment   Begin    End      Code   Data   Used    Size   Use%
 ---------------------------------------------------------------
-[.cseg] 0x000000 0x00001e     30      0     30   32768   0.1%
+[.cseg] 0x000000 0x000022     34      0     34   32768   0.1%
 [.dseg] 0x000100 0x000100      0      0      0    2048   0.0%
 [.eseg] 0x000000 0x000000      0      0      0    1024   0.0%
 
