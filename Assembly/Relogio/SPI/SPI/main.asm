@@ -17,7 +17,7 @@ Setup:
 	cbi DDRB, 4					; MISO - Master input Slave output
 	sbi DDRB, 5					; SCK  - Clock
 
-	ldi r16, 0xDC				; SPI CONTROL -> 
+	ldi r16, 0xD0				; SPI CONTROL -> 
 								; 0xDC -> (SPIE,SPE,MSTR,CPOL,CPHA)
 								; 0x1C -> (MSTR,CPOL,CPHA)
 	out SPCR, r16				; Configuration
@@ -35,6 +35,7 @@ Wait_Transmit:					; Wait 8 pulses clock
 Output:
 	lds r16, 0X4E				; Write value SPDR in R16
 	out PORTD, r16
+	sbi PORTB, 2
 	rjmp loop
 
 ;	Spi_Transmiter:
