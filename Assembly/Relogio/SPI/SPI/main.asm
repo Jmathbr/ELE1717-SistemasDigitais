@@ -33,7 +33,7 @@ Wait_Transmit:					; Wait 8 pulses clock
 	rjmp Output							
 
 Output:
-	ldi r16, SPDR
+	lds r16, 0X4E				; Write value SPDR in R16
 	out PORTD, r16
 	rjmp loop
 
