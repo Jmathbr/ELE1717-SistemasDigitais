@@ -11,7 +11,6 @@ Setup:
 	
 	ldi r16, 0xFF			
 	out DDRD, r16				; Configurando todas as portas como saida
-
 	sbi DDRB, 2					; SS   - Slave select
 	sbi DDRB, 3					; MOSI - Master output Slave input
 	cbi DDRB, 4					; MISO - Master input Slave output
@@ -25,12 +24,18 @@ Setup:
 Loop:
 	ldi r16, 0x81
 	out SPDR, r16				; Request Seconds
+	cbi PORTB, 2
+	call Wait_Transmit_send
+	ldi r16, 0x83
+	out SPDR, r16
+	call Wait_Transmit_recive
+	sbi PORTB, 2
 
 Wait_Transmit_send:				; Wait 8 pulses clock 
 	in   r16, SPSR				;
 	sbrs r16, SPIF				; Verify Flag interrupt
 	rjmp Wait_Transmit_send		; Ao final grava o valor recebido no SPDR
-	rjmp Wait_Transmit_recive							
+	ret						
 
 ; Necessita que o SPIF seja limpo
 Wait_Transmit_recive:			; Wait 8 pulses clock 
@@ -40,10 +45,10 @@ Wait_Transmit_recive:			; Wait 8 pulses clock
 	rjmp Output					; Ao final grava o valor recebido no SPDR
 
 Output:
-	lds r16, 0X4E				; Write value SPDR in R16
+	cbi PORTB, 2
+	lds r16, 0x4E				; Write value SPDR in R16
 	out PORTD, r16
-	sbi PORTB, 2				;Nao sei se isso ta certo
-	rjmp loop
+	rjmp Output
 
 ;	Spi_Transmiter:
 ;	ldi r16, 0x03				; Request Minutes
