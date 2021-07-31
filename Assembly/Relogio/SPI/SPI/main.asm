@@ -24,29 +24,43 @@ Setup:
 Loop:
 	; INIT WRITE DATA
 	cbi PORTB, 2				; Start Transmission
+
 	ldi r16, 0x3F				; Clock Burst Write
 	out SPDR, r16				; Set comand
 	call Wait_Transmit_send
 
-	ldi r16, 0x0B				; Adress Day
-	out SPDR, r16				; Set Adress
+	ldi r16, 0x00				; Value Seconds
+	out SPDR, r16				; Set comand
 	call Wait_Transmit_send
 
-	ldi r16, 0x03				; Value Day
-	out SPDR, r16				; Set Day
+	ldi r16, 0x02				; Value Minutis
+	out SPDR, r16				; Set comand
 	call Wait_Transmit_send
 	
-	ldi r16, 0x03				; Adress Minutis
-	out SPDR, r16				; Set Adress
+	ldi r16, 0x12				; Value Hour
+	out SPDR, r16				; Set comand
 	call Wait_Transmit_send
 
-	ldi r16, 0x07				; Value Minutis
-	out SPDR, r16				; Set Minutis
+	ldi r16, 0x01				; Value Data
+	out SPDR, r16				; Set comand
 	call Wait_Transmit_send
 
-	ldi r16, 0x00				; Bit Protecty
-	out SPDR, r16				; Set Protecty
+	ldi r16, 0x08				; Value Month
+	out SPDR, r16				; Set comand
 	call Wait_Transmit_send
+
+	ldi r16, 0x06				; Value Week Day
+	out SPDR, r16				; Set comand
+	call Wait_Transmit_send
+
+	ldi r16, 0x21				; Value Year
+	out SPDR, r16				; Set comand
+	call Wait_Transmit_send
+
+	ldi r16, 0x00				; Value Control
+	out SPDR, r16				; Set bit Protecty
+	call Wait_Transmit_send
+
 	sbi PORTB, 2				; End Transmission
 	; END WRITE DATA
 	
