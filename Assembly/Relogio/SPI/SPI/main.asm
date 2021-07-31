@@ -66,6 +66,8 @@ Loop_write:
 
 loop_read:
 	; INIT READ DATA
+	cbi PORTB, 2				; Start Transmission
+
 	ldi r16, 0xBF				; Clock Burst Read
 	out SPDR, r16				; Set comand
 	call Wait_Transmit_send
@@ -73,15 +75,9 @@ loop_read:
 	ldi r16, 0x00				; Value Seconds
 	out SPDR, r16				; Set comand
 	call Wait_Transmit_send
-
+	
 	lds r17, 0x4E				; Write value SPDR in R17
 	
-	ldi r16, 0x00				; Value Seconds
-	out SPDR, r16				; Set comand
-	call Wait_Transmit_send
-
-
-
 	ldi r16, 0x02				; Value Minutis
 	out SPDR, r16				; Set comand
 	call Wait_Transmit_send
@@ -109,6 +105,8 @@ loop_read:
 	ldi r16, 0x00				; Value Control
 	out SPDR, r16				; Set bit Protecty
 	call Wait_Transmit_send		; End Transmission
+
+	sbi PORTB, 2				; End Transmission
 	; END READ DATA
 	rjmp Output
 

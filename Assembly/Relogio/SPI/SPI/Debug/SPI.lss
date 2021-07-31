@@ -1,5 +1,5 @@
 
-AVRASM ver. 2.2.8  C:\Users\joaom\OneDrive\Documentos\GitHub\SD\Assembly\Relogio\SPI\SPI\main.asm Fri Jul 30 23:13:58 2021
+AVRASM ver. 2.2.8  C:\Users\joaom\OneDrive\Documentos\GitHub\SD\Assembly\Relogio\SPI\SPI\main.asm Sat Jul 31 18:35:59 2021
 
 [builtin](2): Including file 'C:/Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.6.364\avrasm\inc\m328Pdef.inc'
 [builtin](2): Including file 'C:/Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.6.364\avrasm\inc\m328Pdef.inc'
@@ -1013,39 +1013,39 @@ AVRASM ver. 2.2.8  C:\Users\joaom\OneDrive\Documentos\GitHub\SD\Assembly\Relogio
                                  
 000009 e30f                      	ldi r16, 0x3F				; Clock Burst Write
 00000a bd0e                      	out SPDR, r16				; Set comand
-00000b 940e 0059                 	call Wait_Transmit_send
+00000b 940e 0057                 	call Wait_Transmit_send
                                  
 00000d e000                      	ldi r16, 0x00				; Value Seconds
 00000e bd0e                      	out SPDR, r16				; Set comand
-00000f 940e 0059                 	call Wait_Transmit_send
+00000f 940e 0057                 	call Wait_Transmit_send
                                  
 000011 e002                      	ldi r16, 0x02				; Value Minutis
 000012 bd0e                      	out SPDR, r16				; Set comand
-000013 940e 0059                 	call Wait_Transmit_send
+000013 940e 0057                 	call Wait_Transmit_send
                                  	
 000015 e102                      	ldi r16, 0x12				; Value Hour
 000016 bd0e                      	out SPDR, r16				; Set comand
-000017 940e 0059                 	call Wait_Transmit_send
+000017 940e 0057                 	call Wait_Transmit_send
                                  
 000019 e001                      	ldi r16, 0x01				; Value Data
 00001a bd0e                      	out SPDR, r16				; Set comand
-00001b 940e 0059                 	call Wait_Transmit_send
+00001b 940e 0057                 	call Wait_Transmit_send
                                  
 00001d e008                      	ldi r16, 0x08				; Value Month
 00001e bd0e                      	out SPDR, r16				; Set comand
-00001f 940e 0059                 	call Wait_Transmit_send
+00001f 940e 0057                 	call Wait_Transmit_send
                                  
 000021 e006                      	ldi r16, 0x06				; Value Week Day
 000022 bd0e                      	out SPDR, r16				; Set comand
-000023 940e 0059                 	call Wait_Transmit_send
+000023 940e 0057                 	call Wait_Transmit_send
                                  
 000025 e201                      	ldi r16, 0x21				; Value Year
 000026 bd0e                      	out SPDR, r16				; Set comand
-000027 940e 0059                 	call Wait_Transmit_send
+000027 940e 0057                 	call Wait_Transmit_send
                                  
 000029 e000                      	ldi r16, 0x00				; Value Control
 00002a bd0e                      	out SPDR, r16				; Set bit Protecty
-00002b 940e 0059                 	call Wait_Transmit_send
+00002b 940e 0057                 	call Wait_Transmit_send
                                  
 00002d 9a2a                      	sbi PORTB, 2				; End Transmission
                                  	; END WRITE DATA
@@ -1054,60 +1054,58 @@ AVRASM ver. 2.2.8  C:\Users\joaom\OneDrive\Documentos\GitHub\SD\Assembly\Relogio
                                  	; INIT READ DATA
 00002e eb0f                      	ldi r16, 0xBF				; Clock Burst Read
 00002f bd0e                      	out SPDR, r16				; Set comand
-000030 940e 0059                 	call Wait_Transmit_send
+000030 940e 0057                 	call Wait_Transmit_send
                                  
 000032 e000                      	ldi r16, 0x00				; Value Seconds
 000033 bd0e                      	out SPDR, r16				; Set comand
-000034 940e 0059                 	call Wait_Transmit_send
+000034 940e 0057                 	call Wait_Transmit_send
                                  
-000036 9110 004e                 	lds r17, 0x4E				; Write value SPDR in R17
+                                 	;lds r17, 0x4E				; Write value SPDR in R17
                                  	
-000038 e000                      	ldi r16, 0x00				; Value Seconds
-000039 bd0e                      	out SPDR, r16				; Set comand
-00003a 940e 0059                 	call Wait_Transmit_send
+000036 e000                      	ldi r16, 0x00				; Value Seconds
+000037 bd0e                      	out SPDR, r16				; Set comand
+000038 940e 0057                 	call Wait_Transmit_send
                                  
-                                 
-                                 
-00003c e002                      	ldi r16, 0x02				; Value Minutis
-00003d bd0e                      	out SPDR, r16				; Set comand
-00003e 940e 0059                 	call Wait_Transmit_send
+00003a e002                      	ldi r16, 0x02				; Value Minutis
+00003b bd0e                      	out SPDR, r16				; Set comand
+00003c 940e 0057                 	call Wait_Transmit_send
                                  	
-000040 e102                      	ldi r16, 0x12				; Value Hour
-000041 bd0e                      	out SPDR, r16				; Set comand
-000042 940e 0059                 	call Wait_Transmit_send
+00003e e102                      	ldi r16, 0x12				; Value Hour
+00003f bd0e                      	out SPDR, r16				; Set comand
+000040 940e 0057                 	call Wait_Transmit_send
                                  
-000044 e001                      	ldi r16, 0x01				; Value Data
-000045 bd0e                      	out SPDR, r16				; Set comand
-000046 940e 0059                 	call Wait_Transmit_send
+000042 e001                      	ldi r16, 0x01				; Value Data
+000043 bd0e                      	out SPDR, r16				; Set comand
+000044 940e 0057                 	call Wait_Transmit_send
                                  
-000048 e008                      	ldi r16, 0x08				; Value Month
-000049 bd0e                      	out SPDR, r16				; Set comand
-00004a 940e 0059                 	call Wait_Transmit_send
+000046 e008                      	ldi r16, 0x08				; Value Month
+000047 bd0e                      	out SPDR, r16				; Set comand
+000048 940e 0057                 	call Wait_Transmit_send
                                  
-00004c e006                      	ldi r16, 0x06				; Value Week Day
-00004d bd0e                      	out SPDR, r16				; Set comand
-00004e 940e 0059                 	call Wait_Transmit_send
+00004a e006                      	ldi r16, 0x06				; Value Week Day
+00004b bd0e                      	out SPDR, r16				; Set comand
+00004c 940e 0057                 	call Wait_Transmit_send
                                  
-000050 e201                      	ldi r16, 0x21				; Value Year
-000051 bd0e                      	out SPDR, r16				; Set comand
-000052 940e 0059                 	call Wait_Transmit_send
+00004e e201                      	ldi r16, 0x21				; Value Year
+00004f bd0e                      	out SPDR, r16				; Set comand
+000050 940e 0057                 	call Wait_Transmit_send
                                  
-000054 e000                      	ldi r16, 0x00				; Value Control
-000055 bd0e                      	out SPDR, r16				; Set bit Protecty
-000056 940e 0059                 	call Wait_Transmit_send		; End Transmission
+000052 e000                      	ldi r16, 0x00				; Value Control
+000053 bd0e                      	out SPDR, r16				; Set bit Protecty
+000054 940e 0057                 	call Wait_Transmit_send		; End Transmission
                                  	; END READ DATA
-000058 c004                      	rjmp Output
+000056 c004                      	rjmp Output
                                  
                                  
                                  Wait_Transmit_send:				; Wait 8 pulses clock 
-000059 b50d                      	in   r16, SPSR				;
-00005a ff07                      	sbrs r16, SPIF				; Verify Flag interrupt
-00005b cffd                      	rjmp Wait_Transmit_send		; Ao final grava o valor recebido no SPDR
-00005c 9508                      	ret						
+000057 b50d                      	in   r16, SPSR				;
+000058 ff07                      	sbrs r16, SPIF				; Verify Flag interrupt
+000059 cffd                      	rjmp Wait_Transmit_send		; Ao final grava o valor recebido no SPDR
+00005a 9508                      	ret						
                                  
                                  Output:
                                  	;lds r16, 0x4E				; Write value SPDR in R16
-00005d b91b                      	out PORTD, r17
+00005b b91b                      	out PORTD, r17
 
 
 RESOURCE USE INFORMATION
@@ -1127,7 +1125,7 @@ counted separately from r26..r31 here.
 "ATmega328P" register use summary:
 x  :   0 y  :   0 z  :   0 r0 :   0 r1 :   0 r2 :   0 r3 :   0 r4 :   0 
 r5 :   0 r6 :   0 r7 :   0 r8 :   0 r9 :   0 r10:   0 r11:   0 r12:   0 
-r13:   0 r14:   0 r15:   0 r16:  44 r17:   2 r18:   0 r19:   0 r20:   0 
+r13:   0 r14:   0 r15:   0 r16:  44 r17:   1 r18:   0 r19:   0 r20:   0 
 r21:   0 r22:   0 r23:   0 r24:   0 r25:   0 r26:   0 r27:   0 r28:   0 
 r29:   0 r30:   0 r31:   0 
 Registers used: 2 out of 35 (5.7%)
@@ -1143,7 +1141,7 @@ clc   :   0 clh   :   0 cli   :   0 cln   :   0 clr   :   0 cls   :   0
 clt   :   0 clv   :   0 clz   :   0 com   :   0 cp    :   0 cpc   :   0 
 cpi   :   0 cpse  :   0 dec   :   0 eor   :   0 fmul  :   0 fmuls :   0 
 fmulsu:   0 icall :   0 ijmp  :   0 in    :   1 inc   :   0 jmp   :   0 
-ld    :   0 ldd   :   0 ldi   :  21 lds   :   1 lpm   :   0 lsl   :   0 
+ld    :   0 ldd   :   0 ldi   :  21 lds   :   0 lpm   :   0 lsl   :   0 
 lsr   :   0 mov   :   0 movw  :   0 mul   :   0 muls  :   0 mulsu :   0 
 neg   :   0 nop   :   0 or    :   0 ori   :   0 out   :  22 pop   :   0 
 push  :   0 rcall :   0 ret   :   1 reti  :   0 rjmp  :   3 rol   :   0 
@@ -1152,12 +1150,12 @@ sbiw  :   0 sbr   :   0 sbrc  :   0 sbrs  :   1 sec   :   0 seh   :   0
 sei   :   0 sen   :   0 ser   :   0 ses   :   0 set   :   0 sev   :   0 
 sez   :   0 sleep :   0 spm   :   0 st    :   0 std   :   0 sts   :   0 
 sub   :   0 subi  :   0 swap  :   0 tst   :   0 wdr   :   0 
-Instructions used: 10 out of 113 (8.8%)
+Instructions used: 9 out of 113 (8.0%)
 
 "ATmega328P" memory use summary [bytes]:
 Segment   Begin    End      Code   Data   Used    Size   Use%
 ---------------------------------------------------------------
-[.cseg] 0x000000 0x0000be    190      0    190   32768   0.6%
+[.cseg] 0x000000 0x0000ba    186      0    186   32768   0.6%
 [.dseg] 0x000100 0x000100      0      0      0    2048   0.0%
 [.eseg] 0x000000 0x000000      0      0      0    1024   0.0%
 
