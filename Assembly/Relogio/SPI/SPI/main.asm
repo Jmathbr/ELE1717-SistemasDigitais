@@ -21,7 +21,7 @@ Setup:
 								; 0x1C -> (MSTR,CPOL,CPHA)
 	out SPCR, r16				; Configuration
 
-Loop:
+Loop_write:
 	; INIT WRITE DATA
 	cbi PORTB, 2				; Start Transmission
 
@@ -63,7 +63,8 @@ Loop:
 
 	sbi PORTB, 2				; End Transmission
 	; END WRITE DATA
-	
+
+loop_read:
 	; INIT READ DATA
 	ldi r16, 0xBF				; Clock Burst Read
 	out SPDR, r16				; Set comand
@@ -72,6 +73,14 @@ Loop:
 	ldi r16, 0x00				; Value Seconds
 	out SPDR, r16				; Set comand
 	call Wait_Transmit_send
+
+	lds r17, 0x4E				; Write value SPDR in R17
+	
+	ldi r16, 0x00				; Value Seconds
+	out SPDR, r16				; Set comand
+	call Wait_Transmit_send
+
+
 
 	ldi r16, 0x02				; Value Minutis
 	out SPDR, r16				; Set comand
@@ -96,8 +105,6 @@ Loop:
 	ldi r16, 0x21				; Value Year
 	out SPDR, r16				; Set comand
 	call Wait_Transmit_send
-	
-	lds r17, 0x4E				; Write value SPDR in R17
 
 	ldi r16, 0x00				; Value Control
 	out SPDR, r16				; Set bit Protecty
@@ -115,4 +122,4 @@ Wait_Transmit_send:				; Wait 8 pulses clock
 Output:
 	;lds r16, 0x4E				; Write value SPDR in R16
 	out PORTD, r17
-	rjmp Output
+	rjmp loop_read
