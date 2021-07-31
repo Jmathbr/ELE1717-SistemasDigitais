@@ -16,7 +16,7 @@ Setup:
 	cbi DDRB, 4					; MISO - Master input Slave output
 	sbi DDRB, 5					; SCK  - Clock
 
-	ldi r16, 0xD0				; SPI CONTROL -> 
+	ldi r16, 0xD4				; SPI CONTROL -> 
 								; 0xDC -> (SPIE,SPE,MSTR,CPOL,CPHA)
 								; 0x1C -> (MSTR,CPOL,CPHA)
 	out SPCR, r16				; Configuration
