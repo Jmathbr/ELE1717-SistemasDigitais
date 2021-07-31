@@ -24,8 +24,8 @@
  <LABELS>
   <Setup><FILE>C:\Users\joaom\OneDrive\Documentos\GitHub\SD\Assembly\Relogio\SPI\SPI\main.asm</FILE><LINE>10</LINE></Setup>
   <Loop><FILE>C:\Users\joaom\OneDrive\Documentos\GitHub\SD\Assembly\Relogio\SPI\SPI\main.asm</FILE><LINE>24</LINE></Loop>
-  <Wait_Transmit_send><FILE>C:\Users\joaom\OneDrive\Documentos\GitHub\SD\Assembly\Relogio\SPI\SPI\main.asm</FILE><LINE>49</LINE></Wait_Transmit_send>
-  <Wait_Transmit_recive><FILE>C:\Users\joaom\OneDrive\Documentos\GitHub\SD\Assembly\Relogio\SPI\SPI\main.asm</FILE><LINE>56</LINE></Wait_Transmit_recive>
-  <Output><FILE>C:\Users\joaom\OneDrive\Documentos\GitHub\SD\Assembly\Relogio\SPI\SPI\main.asm</FILE><LINE>62</LINE></Output>
+  <Wait_Transmit_send><FILE>C:\Users\joaom\OneDrive\Documentos\GitHub\SD\Assembly\Relogio\SPI\SPI\main.asm</FILE><LINE>54</LINE></Wait_Transmit_send>
+  <Wait_Transmit_recive><FILE>C:\Users\joaom\OneDrive\Documentos\GitHub\SD\Assembly\Relogio\SPI\SPI\main.asm</FILE><LINE>61</LINE></Wait_Transmit_recive>
+  <Output><FILE>C:\Users\joaom\OneDrive\Documentos\GitHub\SD\Assembly\Relogio\SPI\SPI\main.asm</FILE><LINE>67</LINE></Output>
  </LABELS>
 </ASSEMBLER_INFO>
