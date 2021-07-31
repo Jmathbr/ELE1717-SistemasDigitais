@@ -22,14 +22,27 @@ Setup:
 	out SPCR, r16				; Configuration
 
 Loop:
-	ldi r16, 0x81
-	out SPDR, r16				; Request Seconds
-	cbi PORTB, 2
+	cbi PORTB, 2				; Start Transmission
+	ldi r16, 0x0B				; Adress Day
+	out SPDR, r16				; Set Adress
 	call Wait_Transmit_send
-	ldi r16, 0x83
+
+	ldi r16, 0x03				; Value Day
+	out SPDR, r16				; Set Day
+	call Wait_Transmit_send
+	sbi PORTB, 2				; End Transmission
+
+	cbi PORTB, 2				; Start Transmission
+	
+	ldi r16, 0x8B				; Request Day
 	out SPDR, r16
 	call Wait_Transmit_recive
-	sbi PORTB, 2
+	
+	clr r16						; Trash Value
+	out SPDR, r16
+	call Wait_Transmit_recive	; Return Value Day	
+
+
 
 Wait_Transmit_send:				; Wait 8 pulses clock 
 	in   r16, SPSR				;
