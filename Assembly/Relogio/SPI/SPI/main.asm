@@ -22,7 +22,12 @@ Setup:
 	out SPCR, r16				; Configuration
 
 Loop:
+	; INIT WRITE DATA
 	cbi PORTB, 2				; Start Transmission
+	ldi r16, 0x3F				; Clock Burst Write
+	out SPDR, r16				; Set comand
+	call Wait_Transmit_send
+
 	ldi r16, 0x0B				; Adress Day
 	out SPDR, r16				; Set Adress
 	call Wait_Transmit_send
@@ -30,14 +35,22 @@ Loop:
 	ldi r16, 0x03				; Value Day
 	out SPDR, r16				; Set Day
 	call Wait_Transmit_send
+	
+	ldi r16, 0x03				; Adress Minutis
+	out SPDR, r16				; Set Adress
+	call Wait_Transmit_send
+
+	ldi r16, 0x07				; Value Minutis
+	out SPDR, r16				; Set Minutis
+	call Wait_Transmit_send
+
+	ldi r16, 0x00				; Bit Protecty
+	out SPDR, r16				; Set Protecty
+	call Wait_Transmit_send
 	sbi PORTB, 2				; End Transmission
-
-	ldi r16, 0xD4				; SPI CONTROL -> 
-								; 0xDC -> (SPIE,SPE,MSTR,CPOL,CPHA)
-								; 0x1C -> (MSTR,CPOL,CPHA)
-								; 0xD4 -> (SPIE,SPE,MSTR,CPHA)
-	out SPCR, r16				; Configuration
-
+	; END WRITE DATA
+	
+	; INIT READ DATA
 	cbi PORTB, 2				; Start Transmission
 	ldi r16, 0x8B				; Request Day
 	out SPDR, r16
@@ -47,7 +60,7 @@ Loop:
 	out SPDR, r16
 	call Wait_Transmit_recive	; Return Value Day	
 	sbi PORTB, 2				; End Transmission
-
+	; END READ DATA
 	rjmp Output
 
 
