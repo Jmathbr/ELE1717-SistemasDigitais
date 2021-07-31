@@ -1,5 +1,5 @@
 
-AVRASM ver. 2.2.8  C:\Users\joaom\OneDrive\Documentos\GitHub\SD\Assembly\Relogio\SPI\SPI\main.asm Fri Jul 30 21:40:25 2021
+AVRASM ver. 2.2.8  C:\Users\joaom\OneDrive\Documentos\GitHub\SD\Assembly\Relogio\SPI\SPI\main.asm Fri Jul 30 22:02:23 2021
 
 
 EQU  SIGNATURE_000 0000001e
@@ -698,6 +698,6 @@ EQU  INT_VECTORS_SIZE 00000034
 DEF  read         r18
 CSEG Setup        00000000
 CSEG Loop         00000008
-CSEG Wait_Transmit_send 0000001f
-CSEG Wait_Transmit_recive 00000023
-CSEG Output       00000027
+CSEG Wait_Transmit_send 0000001d
+CSEG Wait_Transmit_recive 00000021
+CSEG Output       00000025

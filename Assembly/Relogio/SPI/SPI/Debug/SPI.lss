@@ -1,5 +1,5 @@
 
-AVRASM ver. 2.2.8  C:\Users\joaom\OneDrive\Documentos\GitHub\SD\Assembly\Relogio\SPI\SPI\main.asm Fri Jul 30 21:40:25 2021
+AVRASM ver. 2.2.8  C:\Users\joaom\OneDrive\Documentos\GitHub\SD\Assembly\Relogio\SPI\SPI\main.asm Fri Jul 30 22:02:23 2021
 
 [builtin](2): Including file 'C:/Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.6.364\avrasm\inc\m328Pdef.inc'
 [builtin](2): Including file 'C:/Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.6.364\avrasm\inc\m328Pdef.inc'
@@ -1011,47 +1011,45 @@ AVRASM ver. 2.2.8  C:\Users\joaom\OneDrive\Documentos\GitHub\SD\Assembly\Relogio
 000008 982a                      	cbi PORTB, 2				; Start Transmission
 000009 e00b                      	ldi r16, 0x0B				; Adress Day
 00000a bd0e                      	out SPDR, r16				; Set Adress
-00000b 940e 001f                 	call Wait_Transmit_send
-00000d 9a2a                      	sbi PORTB, 2				; End Transmission
+00000b 940e 001d                 	call Wait_Transmit_send
                                  
-00000e 982a                      	cbi PORTB, 2				; Start Transmission
-00000f e003                      	ldi r16, 0x03				; Value Day
-000010 bd0e                      	out SPDR, r16				; Set Day
-000011 940e 001f                 	call Wait_Transmit_send
-000013 9a2a                      	sbi PORTB, 2				; End Transmission
+00000d e003                      	ldi r16, 0x03				; Value Day
+00000e bd0e                      	out SPDR, r16				; Set Day
+00000f 940e 001d                 	call Wait_Transmit_send
+000011 9a2a                      	sbi PORTB, 2				; End Transmission
                                  
                                  
-000014 982a                      	cbi PORTB, 2				; Start Transmission
-000015 e80b                      	ldi r16, 0x8B				; Request Day
-000016 bd0e                      	out SPDR, r16
-000017 940e 0023                 	call Wait_Transmit_recive
+000012 982a                      	cbi PORTB, 2				; Start Transmission
+000013 e80b                      	ldi r16, 0x8B				; Request Day
+000014 bd0e                      	out SPDR, r16
+000015 940e 0021                 	call Wait_Transmit_recive
                                  	
-000019 2700                      	clr r16						; Trash Value
-00001a bd0e                      	out SPDR, r16
-00001b 940e 0023                 	call Wait_Transmit_recive	; Return Value Day	
-00001d 9a2a                      	sbi PORTB, 2				; End Transmission
+000017 2700                      	clr r16						; Trash Value
+000018 bd0e                      	out SPDR, r16
+000019 940e 0021                 	call Wait_Transmit_recive	; Return Value Day	
+00001b 9a2a                      	sbi PORTB, 2				; End Transmission
                                  
-00001e c008                      	rjmp Output
+00001c c008                      	rjmp Output
                                  
                                  
                                  Wait_Transmit_send:				; Wait 8 pulses clock 
-00001f b50d                      	in   r16, SPSR				;
-000020 ff07                      	sbrs r16, SPIF				; Verify Flag interrupt
-000021 cffd                      	rjmp Wait_Transmit_send		; Ao final grava o valor recebido no SPDR
-000022 9508                      	ret						
+00001d b50d                      	in   r16, SPSR				;
+00001e ff07                      	sbrs r16, SPIF				; Verify Flag interrupt
+00001f cffd                      	rjmp Wait_Transmit_send		; Ao final grava o valor recebido no SPDR
+000020 9508                      	ret						
                                  
                                  ; Necessita que o SPIF seja limpo
                                  Wait_Transmit_recive:			; Wait 8 pulses clock 
-000023 b50d                      	in   r16, SPSR				;
-000024 ff07                      	sbrs r16, SPIF				; Verify Flag interrupt
-000025 cffd                      	rjmp Wait_Transmit_recive
-000026 c000                      	rjmp Output					; Ao final grava o valor recebido no SPDR
+000021 b50d                      	in   r16, SPSR				;
+000022 ff07                      	sbrs r16, SPIF				; Verify Flag interrupt
+000023 cffd                      	rjmp Wait_Transmit_recive
+000024 c000                      	rjmp Output					; Ao final grava o valor recebido no SPDR
                                  
                                  Output:
-000027 982a                      	cbi PORTB, 2
-000028 9100 004e                 	lds r16, 0x4E				; Write value SPDR in R16
-00002a b90b                      	out PORTD, r16
-00002b cffb                      	rjmp Output
+000025 982a                      	cbi PORTB, 2
+000026 9100 004e                 	lds r16, 0x4E				; Write value SPDR in R16
+000028 b90b                      	out PORTD, r16
+000029 cffb                      	rjmp Output
                                  
                                  ;	Spi_Transmiter:
                                  ;	ldi r16, 0x03				; Request Minutes
@@ -1086,7 +1084,7 @@ andi  :   0 asr   :   0 bclr  :   0 bld   :   0 brbc  :   0 brbs  :   0
 brcc  :   0 brcs  :   0 break :   0 breq  :   0 brge  :   0 brhc  :   0 
 brhs  :   0 brid  :   0 brie  :   0 brlo  :   0 brlt  :   0 brmi  :   0 
 brne  :   0 brpl  :   0 brsh  :   0 brtc  :   0 brts  :   0 brvc  :   0 
-brvs  :   0 bset  :   0 bst   :   0 call  :   4 cbi   :   5 cbr   :   0 
+brvs  :   0 bset  :   0 bst   :   0 call  :   4 cbi   :   4 cbr   :   0 
 clc   :   0 clh   :   0 cli   :   0 cln   :   0 clr   :   1 cls   :   0 
 clt   :   0 clv   :   0 clz   :   0 com   :   0 cp    :   0 cpc   :   0 
 cpi   :   0 cpse  :   0 dec   :   0 eor   :   0 fmul  :   0 fmuls :   0 
@@ -1095,7 +1093,7 @@ ld    :   0 ldd   :   0 ldi   :   5 lds   :   1 lpm   :   0 lsl   :   0
 lsr   :   0 mov   :   0 movw  :   0 mul   :   0 muls  :   0 mulsu :   0 
 neg   :   0 nop   :   0 or    :   0 ori   :   0 out   :   7 pop   :   0 
 push  :   0 rcall :   0 ret   :   1 reti  :   0 rjmp  :   5 rol   :   0 
-ror   :   0 sbc   :   0 sbci  :   0 sbi   :   6 sbic  :   0 sbis  :   0 
+ror   :   0 sbc   :   0 sbci  :   0 sbi   :   5 sbic  :   0 sbis  :   0 
 sbiw  :   0 sbr   :   0 sbrc  :   0 sbrs  :   2 sec   :   0 seh   :   0 
 sei   :   0 sen   :   0 ser   :   0 ses   :   0 set   :   0 sev   :   0 
 sez   :   0 sleep :   0 spm   :   0 st    :   0 std   :   0 sts   :   0 
@@ -1105,7 +1103,7 @@ Instructions used: 11 out of 113 (9.7%)
 "ATmega328P" memory use summary [bytes]:
 Segment   Begin    End      Code   Data   Used    Size   Use%
 ---------------------------------------------------------------
-[.cseg] 0x000000 0x000058     88      0     88   32768   0.3%
+[.cseg] 0x000000 0x000054     84      0     84   32768   0.3%
 [.dseg] 0x000100 0x000100      0      0      0    2048   0.0%
 [.eseg] 0x000000 0x000000      0      0      0    1024   0.0%
 
