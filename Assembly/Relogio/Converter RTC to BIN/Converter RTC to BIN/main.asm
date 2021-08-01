@@ -59,7 +59,7 @@ b_inc:
 	brsh limite_sup_de
 	cpi UN, 0x0A
 	brsh clear_un
-	rjmp RTC_TO_BIN
+	ret
 
 b_dec:
 	dec UN
@@ -67,7 +67,7 @@ b_dec:
 	breq limite_inf_de
 	cpi UN, 0xFF
 	breq set_un
-	rjmp RTC_TO_BIN
+	ret
 
 clear_un:
 	ldi r16, 0x10
@@ -78,25 +78,25 @@ clear_un:
 limite_sup_de:
 	cpi UN, 0x0A
 	brsh limite_sup_un
-	rjmp RTC_TO_BIN
+	ret
 
 limite_sup_un:
 	clr UN
 	clr DE
-	rjmp RTC_TO_BIN
+	ret
 	
 limite_inf_de:
 	cpi UN, 0xFF
 	brsh limite_inf_un
-	rjmp RTC_TO_BIN	
+	ret	
 
 limite_inf_un:
 	ldi UN, 0x09
 	ldi DE, 0x50
-	rjmp RTC_TO_BIN
+	ret
 
 set_un:
 	ldi UN, 0x09
 	ldi r16, 0x10
 	sub DE, r16
-	rjmp RTC_TO_BIN
+	ret
