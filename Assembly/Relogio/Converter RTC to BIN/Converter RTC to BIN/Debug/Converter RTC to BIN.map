@@ -1,5 +1,5 @@
 
-AVRASM ver. 2.2.8  C:\Users\joaom\OneDrive\Documentos\GitHub\SD\Assembly\Relogio\Converter RTC to BIN\Converter RTC to BIN\main.asm Sun Aug 01 00:00:07 2021
+AVRASM ver. 2.2.8  C:\Users\joaom\OneDrive\Documentos\GitHub\SD\Assembly\Relogio\Converter RTC to BIN\Converter RTC to BIN\main.asm Sun Aug 01 14:59:50 2021
 
 
 EQU  SIGNATURE_000 0000001e

@@ -39,64 +39,68 @@ Setup:
 
 RTC_TO_BIN:
 
-	ldi HORAS, 0x00					; Value Input
-    mov UN, HORAS
-	mov DE, HORAS
-	cbr UN,0XF0
-	cbr DE,0X0F
+	ldi HORAS, 0x59					; Value Input
+    mov UN, HORAS					; Copy value input
+	mov DE, HORAS					; Copy value input
+	cbr UN,0XF0						; Clear value DE
+	cbr DE,0X0F						; Clear value UN
 	
-	sbic PIND, BINC
-	call b_inc
+	sbic PIND, BINC					; Verify Button_INC press
+	call b_inc						; Call function
 	nop
-	sbic PIND, BDEC
-	call b_dec
+	sbic PIND, BDEC					; Verify Button_DEC press
+	call b_dec						; Call function
 	nop
+
+	; Introduce time delay
+	; Corresponding to the frequency of 2hz
+
 	ret
 
 b_inc:
-	inc UN
-	cpi DE, 0x50
-	brsh limite_sup_de
-	cpi UN, 0x0A
-	brsh clear_un
-	ret
+	inc UN							; Inc UN
+	cpi DE, 0x50					; Verify DE = 50
+	brsh limite_sup_de				; Start upper limit
+	cpi UN, 0x0A					; Verify UN >= 10
+	brsh clear_un					; Start Clear unit
+	rjmp RTC_TO_BIN
 
 b_dec:
-	dec UN
-	cpi DE, 0x00
-	breq limite_inf_de
-	cpi UN, 0xFF
-	breq set_un
-	ret
+	dec UN							; Dec UN
+	cpi DE, 0x00					; Verify DE = 00
+	breq limite_inf_de				; Start lower limit
+	cpi UN, 0xFF					; Verify UN = 255
+	breq set_un						; Start set unit
+	rjmp RTC_TO_BIN
 
 clear_un:
 	ldi r16, 0x10
 	add DE, r16
 	clr UN
-	ret
+	rjmp RTC_TO_BIN
 
 limite_sup_de:
 	cpi UN, 0x0A
 	brsh limite_sup_un
-	ret
+	rjmp RTC_TO_BIN
 
 limite_sup_un:
 	clr UN
 	clr DE
-	ret
+	rjmp RTC_TO_BIN
 	
 limite_inf_de:
 	cpi UN, 0xFF
 	brsh limite_inf_un
-	ret	
+	rjmp RTC_TO_BIN
 
 limite_inf_un:
 	ldi UN, 0x09
 	ldi DE, 0x50
-	ret
+	rjmp RTC_TO_BIN
 
 set_un:
 	ldi UN, 0x09
 	ldi r16, 0x10
 	sub DE, r16
-	ret
+	rjmp RTC_TO_BIN
