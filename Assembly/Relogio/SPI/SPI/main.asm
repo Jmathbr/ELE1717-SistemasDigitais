@@ -117,9 +117,3 @@ Wait_Transmit_send:				; Wait 8 pulses clock
 Output:
 	out PORTD, r17
 	rjmp loop_read
-
-logica:
-	ldi r17, 0x21
-	ldi r16, 0xA
-	fmul r17, r16
-	mov r17,r1
