@@ -1,5 +1,5 @@
 
-AVRASM ver. 2.2.8  C:\Users\joaom\OneDrive\Documentos\GitHub\SD\Assembly\Relogio\Converter RTC to BIN\Converter RTC to BIN\main.asm Sat Jul 31 23:38:24 2021
+AVRASM ver. 2.2.8  C:\Users\joaom\OneDrive\Documentos\GitHub\SD\Assembly\Relogio\Converter RTC to BIN\Converter RTC to BIN\main.asm Sat Jul 31 23:55:33 2021
 
 
 EQU  SIGNATURE_000 0000001e
@@ -719,11 +719,11 @@ DEF  UN           r24
 DEF  DE           r25
 CSEG Setup        00000000
 CSEG RTC_TO_BIN   00000002
-CSEG b_dec        00000011
-CSEG b_inc        0000000b
-CSEG limite_sup_de 0000001b
-CSEG clear_un     00000017
-CSEG limite_inf_de 00000021
-CSEG set_un       00000027
-CSEG limite_sup_un 0000001e
-CSEG limite_inf_un 00000024
+CSEG b_inc        00000010
+CSEG b_dec        00000016
+CSEG limite_sup_de 00000020
+CSEG clear_un     0000001c
+CSEG limite_inf_de 00000026
+CSEG set_un       0000002c
+CSEG limite_sup_un 00000023
+CSEG limite_inf_un 00000029

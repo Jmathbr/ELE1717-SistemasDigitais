@@ -24,13 +24,13 @@
  <LABELS>
   <Setup><FILE>C:\Users\joaom\OneDrive\Documentos\GitHub\SD\Assembly\Relogio\Converter RTC to BIN\Converter RTC to BIN\main.asm</FILE><LINE>37</LINE></Setup>
   <RTC_TO_BIN><FILE>C:\Users\joaom\OneDrive\Documentos\GitHub\SD\Assembly\Relogio\Converter RTC to BIN\Converter RTC to BIN\main.asm</FILE><LINE>40</LINE></RTC_TO_BIN>
-  <b_dec><FILE>C:\Users\joaom\OneDrive\Documentos\GitHub\SD\Assembly\Relogio\Converter RTC to BIN\Converter RTC to BIN\main.asm</FILE><LINE>69</LINE></b_dec>
-  <b_inc><FILE>C:\Users\joaom\OneDrive\Documentos\GitHub\SD\Assembly\Relogio\Converter RTC to BIN\Converter RTC to BIN\main.asm</FILE><LINE>57</LINE></b_inc>
-  <limite_sup_de><FILE>C:\Users\joaom\OneDrive\Documentos\GitHub\SD\Assembly\Relogio\Converter RTC to BIN\Converter RTC to BIN\main.asm</FILE><LINE>85</LINE></limite_sup_de>
-  <clear_un><FILE>C:\Users\joaom\OneDrive\Documentos\GitHub\SD\Assembly\Relogio\Converter RTC to BIN\Converter RTC to BIN\main.asm</FILE><LINE>79</LINE></clear_un>
-  <limite_inf_de><FILE>C:\Users\joaom\OneDrive\Documentos\GitHub\SD\Assembly\Relogio\Converter RTC to BIN\Converter RTC to BIN\main.asm</FILE><LINE>95</LINE></limite_inf_de>
-  <set_un><FILE>C:\Users\joaom\OneDrive\Documentos\GitHub\SD\Assembly\Relogio\Converter RTC to BIN\Converter RTC to BIN\main.asm</FILE><LINE>105</LINE></set_un>
-  <limite_sup_un><FILE>C:\Users\joaom\OneDrive\Documentos\GitHub\SD\Assembly\Relogio\Converter RTC to BIN\Converter RTC to BIN\main.asm</FILE><LINE>90</LINE></limite_sup_un>
-  <limite_inf_un><FILE>C:\Users\joaom\OneDrive\Documentos\GitHub\SD\Assembly\Relogio\Converter RTC to BIN\Converter RTC to BIN\main.asm</FILE><LINE>100</LINE></limite_inf_un>
+  <b_inc><FILE>C:\Users\joaom\OneDrive\Documentos\GitHub\SD\Assembly\Relogio\Converter RTC to BIN\Converter RTC to BIN\main.asm</FILE><LINE>56</LINE></b_inc>
+  <b_dec><FILE>C:\Users\joaom\OneDrive\Documentos\GitHub\SD\Assembly\Relogio\Converter RTC to BIN\Converter RTC to BIN\main.asm</FILE><LINE>64</LINE></b_dec>
+  <limite_sup_de><FILE>C:\Users\joaom\OneDrive\Documentos\GitHub\SD\Assembly\Relogio\Converter RTC to BIN\Converter RTC to BIN\main.asm</FILE><LINE>78</LINE></limite_sup_de>
+  <clear_un><FILE>C:\Users\joaom\OneDrive\Documentos\GitHub\SD\Assembly\Relogio\Converter RTC to BIN\Converter RTC to BIN\main.asm</FILE><LINE>72</LINE></clear_un>
+  <limite_inf_de><FILE>C:\Users\joaom\OneDrive\Documentos\GitHub\SD\Assembly\Relogio\Converter RTC to BIN\Converter RTC to BIN\main.asm</FILE><LINE>88</LINE></limite_inf_de>
+  <set_un><FILE>C:\Users\joaom\OneDrive\Documentos\GitHub\SD\Assembly\Relogio\Converter RTC to BIN\Converter RTC to BIN\main.asm</FILE><LINE>98</LINE></set_un>
+  <limite_sup_un><FILE>C:\Users\joaom\OneDrive\Documentos\GitHub\SD\Assembly\Relogio\Converter RTC to BIN\Converter RTC to BIN\main.asm</FILE><LINE>83</LINE></limite_sup_un>
+  <limite_inf_un><FILE>C:\Users\joaom\OneDrive\Documentos\GitHub\SD\Assembly\Relogio\Converter RTC to BIN\Converter RTC to BIN\main.asm</FILE><LINE>93</LINE></limite_inf_un>
  </LABELS>
 </ASSEMBLER_INFO>

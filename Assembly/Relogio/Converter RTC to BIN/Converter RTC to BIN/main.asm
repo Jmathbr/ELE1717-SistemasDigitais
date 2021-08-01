@@ -38,8 +38,6 @@ Setup:
     call RTC_TO_BIN
 
 RTC_TO_BIN:
-    nop
-	nop
 
 	ldi HORAS, 0x00					; Value Input
     mov UN, HORAS
@@ -47,12 +45,13 @@ RTC_TO_BIN:
 	cbr UN,0XF0
 	cbr DE,0X0F
 	
-	;checa o pino de incremento
+	sbic PIND, BINC
 	call b_inc
-
-	;checa o pino de decremento
+	nop
+	sbic PIND, BDEC
 	call b_dec
-
+	nop
+	ret
 
 b_inc:
 	inc UN

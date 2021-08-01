@@ -1,5 +1,5 @@
 
-AVRASM ver. 2.2.8  C:\Users\joaom\OneDrive\Documentos\GitHub\SD\Assembly\Relogio\Converter RTC to BIN\Converter RTC to BIN\main.asm Sat Jul 31 23:38:24 2021
+AVRASM ver. 2.2.8  C:\Users\joaom\OneDrive\Documentos\GitHub\SD\Assembly\Relogio\Converter RTC to BIN\Converter RTC to BIN\main.asm Sat Jul 31 23:55:33 2021
 
 [builtin](2): Including file 'C:/Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.6.364\avrasm\inc\m328Pdef.inc'
 [builtin](2): Including file 'C:/Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.6.364\avrasm\inc\m328Pdef.inc'
@@ -1024,74 +1024,67 @@ AVRASM ver. 2.2.8  C:\Users\joaom\OneDrive\Documentos\GitHub\SD\Assembly\Relogio
 000000 940e 0002                     call RTC_TO_BIN
                                  
                                  RTC_TO_BIN:
-000002 0000                          nop
-000003 0000                      	nop
                                  
-000004 e030                      	ldi HORAS, 0x00					; Value Input
-000005 2f83                          mov UN, HORAS
-000006 2f93                      	mov DE, HORAS
-000007 708f                      	cbr UN,0XF0
-000008 7f90                      	cbr DE,0X0F
+000002 e030                      	ldi HORAS, 0x00					; Value Input
+000003 2f83                          mov UN, HORAS
+000004 2f93                      	mov DE, HORAS
+000005 708f                      	cbr UN,0XF0
+000006 7f90                      	cbr DE,0X0F
                                  	
-                                 	;checa o pino de incremento
-                                 	;call b_inc
-                                 
-                                 	;checa o pino de decremento
-000009 940e 0011                 	call b_dec
-                                 
+000007 994d                      	sbic PIND, BINC
+000008 940e 0010                 	call b_inc
+00000a 0000                      	nop
+00000b 994e                      	sbic PIND, BDEC
+00000c 940e 0016                 	call b_dec
+00000e 0000                      	nop
+00000f 9508                      	ret
                                  
                                  b_inc:
-00000b 9583                      	inc UN
-                                 	
-00000c 3590                      	cpi DE, 0x50
-00000d f468                      	brsh limite_sup_de
-                                 	
-00000e 308a                      	cpi UN, 0x0A
-00000f f438                      	brsh clear_un
-000010 cff1                      	rjmp RTC_TO_BIN
-                                 
-                                 	 
+000010 9583                      	inc UN
+000011 3590                      	cpi DE, 0x50
+000012 f468                      	brsh limite_sup_de
+000013 308a                      	cpi UN, 0x0A
+000014 f438                      	brsh clear_un
+000015 cfec                      	rjmp RTC_TO_BIN
                                  
                                  b_dec:
-000011 958a                      	dec UN
-                                 	
-000012 3090                      	cpi DE, 0x00
-000013 f069                      	breq limite_inf_de
-                                 	
-000014 3f8f                      	cpi UN, 0xFF
-000015 f089                      	breq set_un
-000016 cfeb                      	rjmp RTC_TO_BIN
+000016 958a                      	dec UN
+000017 3090                      	cpi DE, 0x00
+000018 f069                      	breq limite_inf_de
+000019 3f8f                      	cpi UN, 0xFF
+00001a f089                      	breq set_un
+00001b cfe6                      	rjmp RTC_TO_BIN
                                  
                                  clear_un:
-000017 e100                      	ldi r16, 0x10
-000018 0f90                      	add DE, r16
-000019 2788                      	clr UN
-00001a 9508                      	ret
+00001c e100                      	ldi r16, 0x10
+00001d 0f90                      	add DE, r16
+00001e 2788                      	clr UN
+00001f 9508                      	ret
                                  
                                  limite_sup_de:
-00001b 308a                      	cpi UN, 0x0A
-00001c f408                      	brsh limite_sup_un
-00001d cfe4                      	rjmp RTC_TO_BIN
+000020 308a                      	cpi UN, 0x0A
+000021 f408                      	brsh limite_sup_un
+000022 cfdf                      	rjmp RTC_TO_BIN
                                  
                                  limite_sup_un:
-00001e 2788                      	clr UN
-00001f 2799                      	clr DE
-000020 cfe1                      	rjmp RTC_TO_BIN
+000023 2788                      	clr UN
+000024 2799                      	clr DE
+000025 cfdc                      	rjmp RTC_TO_BIN
                                  	
                                  limite_inf_de:
-000021 3f8f                      	cpi UN, 0xFF
-000022 f408                      	brsh limite_inf_un
-000023 cfde                      	rjmp RTC_TO_BIN	
+000026 3f8f                      	cpi UN, 0xFF
+000027 f408                      	brsh limite_inf_un
+000028 cfd9                      	rjmp RTC_TO_BIN	
                                  
                                  limite_inf_un:
-000024 e089                      	ldi UN, 0x09
-000025 e590                      	ldi DE, 0x50
-000026 cfdb                      	rjmp RTC_TO_BIN
+000029 e089                      	ldi UN, 0x09
+00002a e590                      	ldi DE, 0x50
+00002b cfd6                      	rjmp RTC_TO_BIN
                                  
                                  set_un:
-000027 e089                      	ldi UN, 0x09
-000028 e100                      	ldi r16, 0x10
-000029 1b90                      	sub DE, r16
+00002c e089                      	ldi UN, 0x09
+00002d e100                      	ldi r16, 0x10
+00002e 1b90                      	sub DE, r16
 
 
 RESOURCE USE INFORMATION
@@ -1122,7 +1115,7 @@ andi  :   0 asr   :   0 bclr  :   0 bld   :   0 brbc  :   0 brbs  :   0
 brcc  :   0 brcs  :   0 break :   0 breq  :   2 brge  :   0 brhc  :   0 
 brhs  :   0 brid  :   0 brie  :   0 brlo  :   0 brlt  :   0 brmi  :   0 
 brne  :   0 brpl  :   0 brsh  :   4 brtc  :   0 brts  :   0 brvc  :   0 
-brvs  :   0 bset  :   0 bst   :   0 call  :   2 cbi   :   0 cbr   :   2 
+brvs  :   0 bset  :   0 bst   :   0 call  :   3 cbi   :   0 cbr   :   2 
 clc   :   0 clh   :   0 cli   :   0 cln   :   0 clr   :   3 cls   :   0 
 clt   :   0 clv   :   0 clz   :   0 com   :   0 cp    :   0 cpc   :   0 
 cpi   :   6 cpse  :   0 dec   :   1 eor   :   0 fmul  :   0 fmuls :   0 
@@ -1130,18 +1123,18 @@ fmulsu:   0 icall :   0 ijmp  :   0 in    :   0 inc   :   1 jmp   :   0
 ld    :   0 ldd   :   0 ldi   :   6 lds   :   0 lpm   :   0 lsl   :   0 
 lsr   :   0 mov   :   2 movw  :   0 mul   :   0 muls  :   0 mulsu :   0 
 neg   :   0 nop   :   2 or    :   0 ori   :   0 out   :   0 pop   :   0 
-push  :   0 rcall :   0 ret   :   1 reti  :   0 rjmp  :   7 rol   :   0 
-ror   :   0 sbc   :   0 sbci  :   0 sbi   :   0 sbic  :   0 sbis  :   0 
+push  :   0 rcall :   0 ret   :   2 reti  :   0 rjmp  :   7 rol   :   0 
+ror   :   0 sbc   :   0 sbci  :   0 sbi   :   0 sbic  :   2 sbis  :   0 
 sbiw  :   0 sbr   :   0 sbrc  :   0 sbrs  :   0 sec   :   0 seh   :   0 
 sei   :   0 sen   :   0 ser   :   0 ses   :   0 set   :   0 sev   :   0 
 sez   :   0 sleep :   0 spm   :   0 st    :   0 std   :   0 sts   :   0 
 sub   :   1 subi  :   0 swap  :   0 tst   :   0 wdr   :   0 
-Instructions used: 15 out of 113 (13.3%)
+Instructions used: 16 out of 113 (14.2%)
 
 "ATmega328P" memory use summary [bytes]:
 Segment   Begin    End      Code   Data   Used    Size   Use%
 ---------------------------------------------------------------
-[.cseg] 0x000000 0x000056     86      0     86   32768   0.3%
+[.cseg] 0x000000 0x000060     96      0     96   32768   0.3%
 [.dseg] 0x000100 0x000100      0      0      0    2048   0.0%
 [.eseg] 0x000000 0x000000      0      0      0    1024   0.0%
 
