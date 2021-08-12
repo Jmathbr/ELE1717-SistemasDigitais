@@ -9,7 +9,7 @@
 ; Replace with your application code
 
 ; SPI comunication in between ATMEGA328p and MAX6902
-
+; Setup
 Setup:
 	
 	ldi r16, 0xFF			
