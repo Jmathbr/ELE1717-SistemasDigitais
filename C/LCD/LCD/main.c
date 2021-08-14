@@ -100,24 +100,67 @@ void lcd_on_cursor(){
 }
 
 void lcd_default(){
-											//Mod:
+	
 	lcd_adress(0x80);
-	lcd_data(0x4D);
+	lcd_data(0x4D);							//M
 	lcd_adress(0x81);
-	lcd_data(0x6F);
+	lcd_data(0x6F);							//o
 	lcd_adress(0x82);
-	lcd_data(0x64);
+	lcd_data(0x64);							//d
 	lcd_adress(0x83);
-	lcd_data(0x3A);
-											//Msg:
+	lcd_data(0x3A);							//:
+	
 	lcd_adress(0xC0);
-	lcd_data(0x4D);
+	lcd_data(0x4D);							//M
 	lcd_adress(0xC1);
-	lcd_data(0x73);
+	lcd_data(0x73);							//s
 	lcd_adress(0xC2);
-	lcd_data(0x67);
+	lcd_data(0x67);							//g
 	lcd_adress(0xC3);
-	lcd_data(0x3A);
+	lcd_data(0x3A);							//:
+}
+
+void lcd_mod(int mod){
+	switch(mod){
+		case 1:								//AM
+			lcd_adress(0x85);
+			lcd_data(0x4D);
+			
+			lcd_adress(0x86);
+			lcd_data(0x4D);
+			break;
+			
+		case 2:								//FM
+			lcd_adress(0x85);
+			lcd_data(0x46);
+			
+			lcd_adress(0x86);
+			lcd_data(0x4D);
+			break;
+			
+		case 3:								//ASK
+			lcd_adress(0x85);
+			lcd_data(0x41);
+			
+			lcd_adress(0x86);
+			lcd_data(0x53);
+			
+			lcd_adress(0x87);
+			lcd_data(0x4B);
+			break;
+			
+		case 4:								//FSK
+			lcd_adress(0x85);
+			lcd_data(0x46);
+			
+			lcd_adress(0x86);
+			lcd_data(0x53);
+					
+			lcd_adress(0x87);
+			lcd_data(0x4B);
+			break;
+	}
+	
 }
 
 int main(void){
@@ -131,5 +174,16 @@ int main(void){
 	lcd_off_cursor();
 	lcd_on_cursor();
 	lcd_default();
+	int i = 0;
+	while(1){
+		i++;
+		void lcd_mod(i);
+		delay_1();
+		delay_1();
+		if(i = 4){
+			i=0;
+		}
+	}
+		
     
 }
