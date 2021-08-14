@@ -140,10 +140,24 @@ void lcd_mod(int mod){
 			lcd_adress(0x8A);
 			lcd_data(0x3A);					//:
 			
+			lcd_adress(0X8D);
+			lcd_data(0xB0);					//-
+			lcd_adress(0X8C);
+			lcd_data(0xB0);					//-
+			lcd_adress(0X8B);
+			lcd_data(0xB0);					//-
+			
 			lcd_adress(0x8E);
 			lcd_data(0x48);					//H
 			lcd_adress(0x8F);
 			lcd_data(0x7A);					//z
+			
+			lcd_adress(0XC5);
+			lcd_data(0xB0);					//-
+			lcd_adress(0XC6);
+			lcd_data(0xB0);					//-
+			lcd_adress(0XC7);
+			lcd_data(0xB0);					//-
 			break;
 			
 		case 2:								//FM
@@ -162,10 +176,24 @@ void lcd_mod(int mod){
 			lcd_adress(0x8A);
 			lcd_data(0x3A);					//:
 			
+			lcd_adress(0X8D);
+			lcd_data(0xB0);					//-
+			lcd_adress(0X8C);
+			lcd_data(0xB0);					//-
+			lcd_adress(0X8B);
+			lcd_data(0xB0);					//-
+			
 			lcd_adress(0x8E);
 			lcd_data(0x48);					//H
 			lcd_adress(0x8F);
 			lcd_data(0x7A);					//z
+			
+			lcd_adress(0XC5);
+			lcd_data(0xB0);					//-
+			lcd_adress(0XC6);
+			lcd_data(0xB0);					//-
+			lcd_adress(0XC7);
+			lcd_data(0xB0);					//-
 			break;
 			
 		case 3:								//ASK
@@ -183,10 +211,40 @@ void lcd_mod(int mod){
 			lcd_adress(0x8A);
 			lcd_data(0x3A);					//:
 			
+			lcd_adress(0X8D);
+			lcd_data(0xB0);					//-
+			lcd_adress(0X8C);
+			lcd_data(0xB0);					//-
+			lcd_adress(0X8B);
+			lcd_data(0xB0);					//-
+			
 			lcd_adress(0x8E);
 			lcd_data(0x62);					//b
 			lcd_adress(0x8F);
-			lcd_data(0x39);					//s
+			lcd_data(0x73);					//s
+		
+			lcd_adress(0XC5);
+			lcd_data(0xB0);					//-
+			lcd_adress(0XC6);
+			lcd_data(0xB0);					//-
+			lcd_adress(0XC7);
+			lcd_data(0x2E);					//.
+			lcd_adress(0XC8);
+			lcd_data(0xB0);					//-
+			lcd_adress(0XC9);
+			lcd_data(0xB0);					//-
+			lcd_adress(0XCA);
+			lcd_data(0x2E);					//.
+			lcd_adress(0XCB);
+			lcd_data(0xB0);					//-
+			lcd_adress(0XCC);
+			lcd_data(0xB0);					//-
+			lcd_adress(0XCD);
+			lcd_data(0x2E);					//.
+			lcd_adress(0XCE);
+			lcd_data(0xB0);					//-
+			lcd_adress(0XCF);
+			lcd_data(0xB0);					//-
 			break;
 			
 		case 4:								//FSK
@@ -204,10 +262,40 @@ void lcd_mod(int mod){
 			lcd_adress(0x8A);
 			lcd_data(0x3A);					//:
 			
+			lcd_adress(0X8D);
+			lcd_data(0xB0);					//-
+			lcd_adress(0X8C);
+			lcd_data(0xB0);					//-
+			lcd_adress(0X8B);
+			lcd_data(0xB0);					//-
+			
 			lcd_adress(0x8E);
 			lcd_data(0x62);					//b
 			lcd_adress(0x8F);
-			lcd_data(0x39);					//s
+			lcd_data(0x73);					//s
+			
+			lcd_adress(0XC5);
+			lcd_data(0xB0);					//-
+			lcd_adress(0XC6);
+			lcd_data(0xB0);					//-
+			lcd_adress(0XC7);
+			lcd_data(0x2E);					//.
+			lcd_adress(0XC8);
+			lcd_data(0xB0);					//-
+			lcd_adress(0XC9);
+			lcd_data(0xB0);					//-
+			lcd_adress(0XCA);
+			lcd_data(0x2E);					//.
+			lcd_adress(0XCB);
+			lcd_data(0xB0);					//-
+			lcd_adress(0XCC);
+			lcd_data(0xB0);					//-
+			lcd_adress(0XCD);
+			lcd_data(0x2E);					//.
+			lcd_adress(0XCE);
+			lcd_data(0xB0);					//-
+			lcd_adress(0XCF);
+			lcd_data(0xB0);					//-
 			break;
 	}
 	
@@ -239,8 +327,46 @@ void lcd_mod(int mod){
 	lcd_adress(0x8F)
 	lcd_data(0x7A)			//z
 	
-
 	
+	//linha 1
+	lcd_adress(0X8D);
+	lcd_data(0xB0);					//-
+	lcd_adress(0X8C);
+	lcd_data(0xB0);					//-
+	lcd_adress(0X8B);
+	lcd_data(0xB0);					//-
+	
+	//linha 2
+	lcd_adress(0XC5);
+	lcd_data(0xB0);					//-
+	lcd_adress(0XC6);
+	lcd_data(0xB0);					//-
+	lcd_adress(0XC7);
+	lcd_data(0xB0);					//-
+	
+	//linha 2
+	lcd_adress(0XC5);
+	lcd_data(0xB0);					//-
+	lcd_adress(0XC6);
+	lcd_data(0xB0);					//-
+	lcd_adress(0XC7);
+	lcd_data(0x2E);					//.
+	lcd_adress(0XC8);
+	lcd_data(0xB0);					//-
+	lcd_adress(0XC9);
+	lcd_data(0xB0);					//-
+	lcd_adress(0XCA);
+	lcd_data(0x2E);					//.
+	lcd_adress(0XCB);
+	lcd_data(0xB0);					//-
+	lcd_adress(0XCC);
+	lcd_data(0xB0);					//-
+	lcd_adress(0XCD);
+	lcd_data(0x2E);					//.
+	lcd_adress(0XCE);
+	lcd_data(0xB0);					//-
+	lcd_adress(0XCF);
+	lcd_data(0xB0);					//-
 */
 
 int main(void){
