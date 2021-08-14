@@ -79,7 +79,7 @@ int main(void){
 	PORTB = 0xF8;
 	PORTC = 0xAF;
 	
-	lcd_init();
+	lcd_init();								//Init LCD
 	lcd_off_cursor();
 	lcd_on_cursor();
 	lcd_adress(0x8F)
