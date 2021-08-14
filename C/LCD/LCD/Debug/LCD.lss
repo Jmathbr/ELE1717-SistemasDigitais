@@ -3,74 +3,74 @@ LCD.elf:     file format elf32-avr
 
 Sections:
 Idx Name          Size      VMA       LMA       File off  Algn
-  0 .data         00000000  00800100  00800100  000001ac  2**0
+  0 .data         00000000  00800100  00800100  000001aa  2**0
                   ALLOC, LOAD, DATA
   1 .text         00000080  00000000  00000000  00000054  2**1
                   CONTENTS, ALLOC, LOAD, READONLY, CODE
-  2 .comment      0000002f  00000000  00000000  000001ac  2**0
+  2 .comment      0000002f  00000000  00000000  000001aa  2**0
                   CONTENTS, READONLY
-  3 .debug_aranges 00000058  00000000  00000000  000001db  2**0
+  3 .debug_aranges 00000058  00000000  00000000  000001d9  2**0
                   CONTENTS, READONLY, DEBUGGING
-  4 .debug_info   00000a60  00000000  00000000  00000233  2**0
+  4 .debug_info   00000aa2  00000000  00000000  00000231  2**0
                   CONTENTS, READONLY, DEBUGGING
-  5 .debug_abbrev 00000672  00000000  00000000  00000c93  2**0
+  5 .debug_abbrev 00000681  00000000  00000000  00000cd3  2**0
                   CONTENTS, READONLY, DEBUGGING
-  6 .debug_line   00000387  00000000  00000000  00001305  2**0
+  6 .debug_line   00000381  00000000  00000000  00001354  2**0
                   CONTENTS, READONLY, DEBUGGING
-  7 .debug_frame  00000094  00000000  00000000  0000168c  2**2
+  7 .debug_frame  00000094  00000000  00000000  000016d8  2**2
                   CONTENTS, READONLY, DEBUGGING
-  8 .debug_str    00000208  00000000  00000000  00001720  2**0
+  8 .debug_str    00000208  00000000  00000000  0000176c  2**0
                   CONTENTS, READONLY, DEBUGGING
-  9 .debug_loc    000000cf  00000000  00000000  00001928  2**0
+  9 .debug_loc    000000cf  00000000  00000000  00001974  2**0
                   CONTENTS, READONLY, DEBUGGING
- 10 .debug_ranges 00000048  00000000  00000000  000019f7  2**0
+ 10 .debug_ranges 00000048  00000000  00000000  00001a43  2**0
                   CONTENTS, READONLY, DEBUGGING
- 11 .text         00000004  00000154  00000154  000001a8  2**1
+ 11 .text         00000004  00000152  00000152  000001a6  2**1
                   CONTENTS, ALLOC, LOAD, READONLY, CODE
- 12 .note.gnu.avr.deviceinfo 00000040  00000000  00000000  00001a40  2**2
+ 12 .note.gnu.avr.deviceinfo 00000040  00000000  00000000  00001a8c  2**2
                   CONTENTS, READONLY, DEBUGGING
- 13 .text.lcd_cmd 00000020  00000104  00000104  00000158  2**1
+ 13 .text.lcd_cmd 00000020  00000102  00000102  00000156  2**1
                   CONTENTS, ALLOC, LOAD, READONLY, CODE
- 14 .text.lcd_data 0000005e  00000080  00000080  000000d4  2**1
+ 14 .text.lcd_data 0000005c  00000080  00000080  000000d4  2**1
                   CONTENTS, ALLOC, LOAD, READONLY, CODE
- 15 .text.lcd_init 00000014  00000124  00000124  00000178  2**1
+ 15 .text.lcd_init 00000014  00000122  00000122  00000176  2**1
                   CONTENTS, ALLOC, LOAD, READONLY, CODE
- 16 .text.lcd_off_cursor 0000000e  00000138  00000138  0000018c  2**1
+ 16 .text.lcd_off_cursor 0000000e  00000136  00000136  0000018a  2**1
                   CONTENTS, ALLOC, LOAD, READONLY, CODE
- 17 .text.lcd_on_cursor 0000000e  00000146  00000146  0000019a  2**1
+ 17 .text.lcd_on_cursor 0000000e  00000144  00000144  00000198  2**1
                   CONTENTS, ALLOC, LOAD, READONLY, CODE
- 18 .text.main    00000026  000000de  000000de  00000132  2**1
+ 18 .text.main    00000026  000000dc  000000dc  00000130  2**1
                   CONTENTS, ALLOC, LOAD, READONLY, CODE
 
 Disassembly of section .text:
 
 00000000 <__vectors>:
    0:	0c 94 34 00 	jmp	0x68	; 0x68 <__ctors_end>
-   4:	0c 94 aa 00 	jmp	0x154	; 0x154 <__bad_interrupt>
-   8:	0c 94 aa 00 	jmp	0x154	; 0x154 <__bad_interrupt>
-   c:	0c 94 aa 00 	jmp	0x154	; 0x154 <__bad_interrupt>
-  10:	0c 94 aa 00 	jmp	0x154	; 0x154 <__bad_interrupt>
-  14:	0c 94 aa 00 	jmp	0x154	; 0x154 <__bad_interrupt>
-  18:	0c 94 aa 00 	jmp	0x154	; 0x154 <__bad_interrupt>
-  1c:	0c 94 aa 00 	jmp	0x154	; 0x154 <__bad_interrupt>
-  20:	0c 94 aa 00 	jmp	0x154	; 0x154 <__bad_interrupt>
-  24:	0c 94 aa 00 	jmp	0x154	; 0x154 <__bad_interrupt>
-  28:	0c 94 aa 00 	jmp	0x154	; 0x154 <__bad_interrupt>
-  2c:	0c 94 aa 00 	jmp	0x154	; 0x154 <__bad_interrupt>
-  30:	0c 94 aa 00 	jmp	0x154	; 0x154 <__bad_interrupt>
-  34:	0c 94 aa 00 	jmp	0x154	; 0x154 <__bad_interrupt>
-  38:	0c 94 aa 00 	jmp	0x154	; 0x154 <__bad_interrupt>
-  3c:	0c 94 aa 00 	jmp	0x154	; 0x154 <__bad_interrupt>
-  40:	0c 94 aa 00 	jmp	0x154	; 0x154 <__bad_interrupt>
-  44:	0c 94 aa 00 	jmp	0x154	; 0x154 <__bad_interrupt>
-  48:	0c 94 aa 00 	jmp	0x154	; 0x154 <__bad_interrupt>
-  4c:	0c 94 aa 00 	jmp	0x154	; 0x154 <__bad_interrupt>
-  50:	0c 94 aa 00 	jmp	0x154	; 0x154 <__bad_interrupt>
-  54:	0c 94 aa 00 	jmp	0x154	; 0x154 <__bad_interrupt>
-  58:	0c 94 aa 00 	jmp	0x154	; 0x154 <__bad_interrupt>
-  5c:	0c 94 aa 00 	jmp	0x154	; 0x154 <__bad_interrupt>
-  60:	0c 94 aa 00 	jmp	0x154	; 0x154 <__bad_interrupt>
-  64:	0c 94 aa 00 	jmp	0x154	; 0x154 <__bad_interrupt>
+   4:	0c 94 a9 00 	jmp	0x152	; 0x152 <__bad_interrupt>
+   8:	0c 94 a9 00 	jmp	0x152	; 0x152 <__bad_interrupt>
+   c:	0c 94 a9 00 	jmp	0x152	; 0x152 <__bad_interrupt>
+  10:	0c 94 a9 00 	jmp	0x152	; 0x152 <__bad_interrupt>
+  14:	0c 94 a9 00 	jmp	0x152	; 0x152 <__bad_interrupt>
+  18:	0c 94 a9 00 	jmp	0x152	; 0x152 <__bad_interrupt>
+  1c:	0c 94 a9 00 	jmp	0x152	; 0x152 <__bad_interrupt>
+  20:	0c 94 a9 00 	jmp	0x152	; 0x152 <__bad_interrupt>
+  24:	0c 94 a9 00 	jmp	0x152	; 0x152 <__bad_interrupt>
+  28:	0c 94 a9 00 	jmp	0x152	; 0x152 <__bad_interrupt>
+  2c:	0c 94 a9 00 	jmp	0x152	; 0x152 <__bad_interrupt>
+  30:	0c 94 a9 00 	jmp	0x152	; 0x152 <__bad_interrupt>
+  34:	0c 94 a9 00 	jmp	0x152	; 0x152 <__bad_interrupt>
+  38:	0c 94 a9 00 	jmp	0x152	; 0x152 <__bad_interrupt>
+  3c:	0c 94 a9 00 	jmp	0x152	; 0x152 <__bad_interrupt>
+  40:	0c 94 a9 00 	jmp	0x152	; 0x152 <__bad_interrupt>
+  44:	0c 94 a9 00 	jmp	0x152	; 0x152 <__bad_interrupt>
+  48:	0c 94 a9 00 	jmp	0x152	; 0x152 <__bad_interrupt>
+  4c:	0c 94 a9 00 	jmp	0x152	; 0x152 <__bad_interrupt>
+  50:	0c 94 a9 00 	jmp	0x152	; 0x152 <__bad_interrupt>
+  54:	0c 94 a9 00 	jmp	0x152	; 0x152 <__bad_interrupt>
+  58:	0c 94 a9 00 	jmp	0x152	; 0x152 <__bad_interrupt>
+  5c:	0c 94 a9 00 	jmp	0x152	; 0x152 <__bad_interrupt>
+  60:	0c 94 a9 00 	jmp	0x152	; 0x152 <__bad_interrupt>
+  64:	0c 94 a9 00 	jmp	0x152	; 0x152 <__bad_interrupt>
 
 00000068 <__ctors_end>:
   68:	11 24       	eor	r1, r1
@@ -79,7 +79,7 @@ Disassembly of section .text:
   6e:	d8 e0       	ldi	r29, 0x08	; 8
   70:	de bf       	out	0x3e, r29	; 62
   72:	cd bf       	out	0x3d, r28	; 61
-  74:	0e 94 6f 00 	call	0xde	; 0xde <main>
+  74:	0e 94 6e 00 	call	0xdc	; 0xdc <main>
   78:	0c 94 3e 00 	jmp	0x7c	; 0x7c <_exit>
 
 0000007c <_exit>:
@@ -90,34 +90,34 @@ Disassembly of section .text:
 
 Disassembly of section .text:
 
-00000154 <__bad_interrupt>:
- 154:	0c 94 00 00 	jmp	0	; 0x0 <__vectors>
+00000152 <__bad_interrupt>:
+ 152:	0c 94 00 00 	jmp	0	; 0x0 <__TEXT_REGION_ORIGIN__>
 
 Disassembly of section .text.lcd_cmd:
 
-00000104 <lcd_cmd>:
+00000102 <lcd_cmd>:
 			PORTB |= (1<<PORTB4);				// Set E = 1
 			delay_1();
 			PORTB &= ~(1<<PORTB4);				// Set E = 0
 		}
 	}
 	PORTB &= ~(1<<PORTB5);					// Set RS = 0 
- 104:	95 b1       	in	r25, 0x05	; 5
- 106:	90 7f       	andi	r25, 0xF0	; 240
- 108:	95 b9       	out	0x05, r25	; 5
- 10a:	95 b1       	in	r25, 0x05	; 5
- 10c:	89 2b       	or	r24, r25
- 10e:	85 b9       	out	0x05, r24	; 5
- 110:	85 b1       	in	r24, 0x05	; 5
- 112:	8f 7d       	andi	r24, 0xDF	; 223
- 114:	85 b9       	out	0x05, r24	; 5
- 116:	85 b1       	in	r24, 0x05	; 5
- 118:	80 61       	ori	r24, 0x10	; 16
- 11a:	85 b9       	out	0x05, r24	; 5
- 11c:	85 b1       	in	r24, 0x05	; 5
- 11e:	8f 7e       	andi	r24, 0xEF	; 239
- 120:	85 b9       	out	0x05, r24	; 5
- 122:	08 95       	ret
+ 102:	95 b1       	in	r25, 0x05	; 5
+ 104:	90 7f       	andi	r25, 0xF0	; 240
+ 106:	95 b9       	out	0x05, r25	; 5
+ 108:	95 b1       	in	r25, 0x05	; 5
+ 10a:	89 2b       	or	r24, r25
+ 10c:	85 b9       	out	0x05, r24	; 5
+ 10e:	85 b1       	in	r24, 0x05	; 5
+ 110:	8f 7d       	andi	r24, 0xDF	; 223
+ 112:	85 b9       	out	0x05, r24	; 5
+ 114:	85 b1       	in	r24, 0x05	; 5
+ 116:	80 61       	ori	r24, 0x10	; 16
+ 118:	85 b9       	out	0x05, r24	; 5
+ 11a:	85 b1       	in	r24, 0x05	; 5
+ 11c:	8f 7e       	andi	r24, 0xEF	; 239
+ 11e:	85 b9       	out	0x05, r24	; 5
+ 120:	08 95       	ret
 
 Disassembly of section .text.lcd_data:
 
@@ -127,118 +127,117 @@ Disassembly of section .text.lcd_data:
   84:	95 b9       	out	0x05, r25	; 5
   86:	20 e0       	ldi	r18, 0x00	; 0
   88:	30 e0       	ldi	r19, 0x00	; 0
-  8a:	22 c0       	rjmp	.+68     	; 0xd0 <lcd_data+0x50>
+  8a:	21 c0       	rjmp	.+66     	; 0xce <lcd_data+0x4e>
   8c:	21 15       	cp	r18, r1
   8e:	31 05       	cpc	r19, r1
-  90:	89 f4       	brne	.+34     	; 0xb4 <lcd_data+0x34>
+  90:	81 f4       	brne	.+32     	; 0xb2 <lcd_data+0x32>
   92:	95 b1       	in	r25, 0x05	; 5
-  94:	9f 70       	andi	r25, 0x0F	; 15
+  94:	90 7f       	andi	r25, 0xF0	; 240
   96:	95 b9       	out	0x05, r25	; 5
   98:	95 b1       	in	r25, 0x05	; 5
-  9a:	98 2b       	or	r25, r24
-  9c:	95 b9       	out	0x05, r25	; 5
-  9e:	95 b1       	in	r25, 0x05	; 5
-  a0:	92 95       	swap	r25
-  a2:	9f 70       	andi	r25, 0x0F	; 15
-  a4:	95 b9       	out	0x05, r25	; 5
-  a6:	95 b1       	in	r25, 0x05	; 5
-  a8:	90 61       	ori	r25, 0x10	; 16
-  aa:	95 b9       	out	0x05, r25	; 5
-  ac:	95 b1       	in	r25, 0x05	; 5
-  ae:	9f 7e       	andi	r25, 0xEF	; 239
-  b0:	95 b9       	out	0x05, r25	; 5
-  b2:	0c c0       	rjmp	.+24     	; 0xcc <lcd_data+0x4c>
-  b4:	95 b1       	in	r25, 0x05	; 5
-  b6:	90 7f       	andi	r25, 0xF0	; 240
-  b8:	95 b9       	out	0x05, r25	; 5
-  ba:	95 b1       	in	r25, 0x05	; 5
-  bc:	98 2b       	or	r25, r24
-  be:	95 b9       	out	0x05, r25	; 5
-  c0:	95 b1       	in	r25, 0x05	; 5
-  c2:	90 61       	ori	r25, 0x10	; 16
-  c4:	95 b9       	out	0x05, r25	; 5
-  c6:	95 b1       	in	r25, 0x05	; 5
-  c8:	9f 7e       	andi	r25, 0xEF	; 239
-  ca:	95 b9       	out	0x05, r25	; 5
-  cc:	2f 5f       	subi	r18, 0xFF	; 255
-  ce:	3f 4f       	sbci	r19, 0xFF	; 255
-  d0:	22 30       	cpi	r18, 0x02	; 2
-  d2:	31 05       	cpc	r19, r1
-  d4:	dc f2       	brlt	.-74     	; 0x8c <lcd_data+0xc>
-  d6:	85 b1       	in	r24, 0x05	; 5
-  d8:	8f 7d       	andi	r24, 0xDF	; 223
-  da:	85 b9       	out	0x05, r24	; 5
-  dc:	08 95       	ret
+  9a:	48 2f       	mov	r20, r24
+  9c:	42 95       	swap	r20
+  9e:	4f 70       	andi	r20, 0x0F	; 15
+  a0:	94 2b       	or	r25, r20
+  a2:	95 b9       	out	0x05, r25	; 5
+  a4:	95 b1       	in	r25, 0x05	; 5
+  a6:	90 61       	ori	r25, 0x10	; 16
+  a8:	95 b9       	out	0x05, r25	; 5
+  aa:	95 b1       	in	r25, 0x05	; 5
+  ac:	9f 7e       	andi	r25, 0xEF	; 239
+  ae:	95 b9       	out	0x05, r25	; 5
+  b0:	0c c0       	rjmp	.+24     	; 0xca <lcd_data+0x4a>
+  b2:	95 b1       	in	r25, 0x05	; 5
+  b4:	90 7f       	andi	r25, 0xF0	; 240
+  b6:	95 b9       	out	0x05, r25	; 5
+  b8:	95 b1       	in	r25, 0x05	; 5
+  ba:	98 2b       	or	r25, r24
+  bc:	95 b9       	out	0x05, r25	; 5
+  be:	95 b1       	in	r25, 0x05	; 5
+  c0:	90 61       	ori	r25, 0x10	; 16
+  c2:	95 b9       	out	0x05, r25	; 5
+  c4:	95 b1       	in	r25, 0x05	; 5
+  c6:	9f 7e       	andi	r25, 0xEF	; 239
+  c8:	95 b9       	out	0x05, r25	; 5
+  ca:	2f 5f       	subi	r18, 0xFF	; 255
+  cc:	3f 4f       	sbci	r19, 0xFF	; 255
+  ce:	22 30       	cpi	r18, 0x02	; 2
+  d0:	31 05       	cpc	r19, r1
+  d2:	e4 f2       	brlt	.-72     	; 0x8c <lcd_data+0xc>
+  d4:	85 b1       	in	r24, 0x05	; 5
+  d6:	8f 7d       	andi	r24, 0xDF	; 223
+  d8:	85 b9       	out	0x05, r24	; 5
+  da:	08 95       	ret
 
 Disassembly of section .text.lcd_init:
 
-00000124 <lcd_init>:
+00000122 <lcd_init>:
 }
 void lcd_init(){
 	
 	lcd_cmd(0x02);							//RS = 0 D7:D4 = 0010
- 124:	82 e0       	ldi	r24, 0x02	; 2
- 126:	0e 94 82 00 	call	0x104	; 0x104 <lcd_cmd>
+ 122:	82 e0       	ldi	r24, 0x02	; 2
+ 124:	0e 94 81 00 	call	0x102	; 0x102 <lcd_cmd>
 	lcd_cmd(0x02);							//RS = 0 D7:D4 = 0010
- 12a:	82 e0       	ldi	r24, 0x02	; 2
- 12c:	0e 94 82 00 	call	0x104	; 0x104 <lcd_cmd>
+ 128:	82 e0       	ldi	r24, 0x02	; 2
+ 12a:	0e 94 81 00 	call	0x102	; 0x102 <lcd_cmd>
 	lcd_cmd(0x08);							//RS = 0 D7:D4 = 1000
- 130:	88 e0       	ldi	r24, 0x08	; 8
- 132:	0e 94 82 00 	call	0x104	; 0x104 <lcd_cmd>
- 136:	08 95       	ret
+ 12e:	88 e0       	ldi	r24, 0x08	; 8
+ 130:	0e 94 81 00 	call	0x102	; 0x102 <lcd_cmd>
+ 134:	08 95       	ret
 
 Disassembly of section .text.lcd_off_cursor:
 
-00000138 <lcd_off_cursor>:
+00000136 <lcd_off_cursor>:
 	
 }
 
 void lcd_off_cursor(){
 
 	lcd_cmd(0x00);							//RS = 0 D7:D4 = 0000
- 138:	80 e0       	ldi	r24, 0x00	; 0
- 13a:	0e 94 82 00 	call	0x104	; 0x104 <lcd_cmd>
+ 136:	80 e0       	ldi	r24, 0x00	; 0
+ 138:	0e 94 81 00 	call	0x102	; 0x102 <lcd_cmd>
 	lcd_cmd(0x0C);							//RS = 0 D7:D4 = 1100
- 13e:	8c e0       	ldi	r24, 0x0C	; 12
- 140:	0e 94 82 00 	call	0x104	; 0x104 <lcd_cmd>
- 144:	08 95       	ret
+ 13c:	8c e0       	ldi	r24, 0x0C	; 12
+ 13e:	0e 94 81 00 	call	0x102	; 0x102 <lcd_cmd>
+ 142:	08 95       	ret
 
 Disassembly of section .text.lcd_on_cursor:
 
-00000146 <lcd_on_cursor>:
+00000144 <lcd_on_cursor>:
 }
 
 void lcd_on_cursor(){
 	
 	lcd_cmd(0x00);							//RS = 0 D7:D4 = 0000
- 146:	80 e0       	ldi	r24, 0x00	; 0
- 148:	0e 94 82 00 	call	0x104	; 0x104 <lcd_cmd>
+ 144:	80 e0       	ldi	r24, 0x00	; 0
+ 146:	0e 94 81 00 	call	0x102	; 0x102 <lcd_cmd>
 	lcd_cmd(0x0F);							//RS = 0 D7:D4 = 1100
- 14c:	8f e0       	ldi	r24, 0x0F	; 15
- 14e:	0e 94 82 00 	call	0x104	; 0x104 <lcd_cmd>
- 152:	08 95       	ret
+ 14a:	8f e0       	ldi	r24, 0x0F	; 15
+ 14c:	0e 94 81 00 	call	0x102	; 0x102 <lcd_cmd>
+ 150:	08 95       	ret
 
 Disassembly of section .text.main:
 
-000000de <main>:
+000000dc <main>:
 			PORTB |= (1<<PORTB4);				// Set E = 1
 			delay_1();
 			PORTB &= ~(1<<PORTB4);				// Set E = 0
 		}
 	}
 	PORTB &= ~(1<<PORTB5);					// Set RS = 0 
-  de:	8f ef       	ldi	r24, 0xFF	; 255
-  e0:	84 b9       	out	0x04, r24	; 4
-  e2:	87 b9       	out	0x07, r24	; 7
-  e4:	80 ef       	ldi	r24, 0xF0	; 240
-  e6:	85 b9       	out	0x05, r24	; 5
-  e8:	8f ea       	ldi	r24, 0xAF	; 175
-  ea:	88 b9       	out	0x08, r24	; 8
-  ec:	0e 94 92 00 	call	0x124	; 0x124 <lcd_init>
-  f0:	0e 94 9c 00 	call	0x138	; 0x138 <lcd_off_cursor>
-  f4:	0e 94 a3 00 	call	0x146	; 0x146 <lcd_on_cursor>
-  f8:	85 e3       	ldi	r24, 0x35	; 53
-  fa:	0e 94 40 00 	call	0x80	; 0x80 <_etext>
-  fe:	80 e0       	ldi	r24, 0x00	; 0
- 100:	90 e0       	ldi	r25, 0x00	; 0
- 102:	08 95       	ret
+  dc:	8f ef       	ldi	r24, 0xFF	; 255
+  de:	84 b9       	out	0x04, r24	; 4
+  e0:	87 b9       	out	0x07, r24	; 7
+  e2:	80 ef       	ldi	r24, 0xF0	; 240
+  e4:	85 b9       	out	0x05, r24	; 5
+  e6:	8f ea       	ldi	r24, 0xAF	; 175
+  e8:	88 b9       	out	0x08, r24	; 8
+  ea:	0e 94 91 00 	call	0x122	; 0x122 <lcd_init>
+  ee:	0e 94 9b 00 	call	0x136	; 0x136 <lcd_off_cursor>
+  f2:	0e 94 a2 00 	call	0x144	; 0x144 <lcd_on_cursor>
+  f6:	85 e3       	ldi	r24, 0x35	; 53
+  f8:	0e 94 40 00 	call	0x80	; 0x80 <__data_load_end>
+  fc:	80 e0       	ldi	r24, 0x00	; 0
+  fe:	90 e0       	ldi	r25, 0x00	; 0
+ 100:	08 95       	ret

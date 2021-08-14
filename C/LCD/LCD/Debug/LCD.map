@@ -12,7 +12,7 @@ Discarded input sections
  .bss           0x0000000000000000        0x0 main.o
  .text.delay_1  0x0000000000000000       0x10 main.o
  .text.lcd_adress
-                0x0000000000000000       0x56 main.o
+                0x0000000000000000       0x5c main.o
  .text          0x0000000000000000        0x0 c:/program files/microchip/xc8/v2.31/avr/bin/../lib/gcc/avr/5.4.0/avr5/memx-const\libgcc.a(_exit.o)
  .data          0x0000000000000000        0x0 c:/program files/microchip/xc8/v2.31/avr/bin/../lib/gcc/avr/5.4.0/avr5/memx-const\libgcc.a(_exit.o)
  .bss           0x0000000000000000        0x0 c:/program files/microchip/xc8/v2.31/avr/bin/../lib/gcc/avr/5.4.0/avr5/memx-const\libgcc.a(_exit.o)
@@ -323,20 +323,20 @@ END GROUP
 .debug_pubnames
  *(.debug_pubnames)
 
-.debug_info     0x0000000000000000      0xa60
+.debug_info     0x0000000000000000      0xaa2
  *(.debug_info .gnu.linkonce.wi.*)
  .debug_info    0x0000000000000000      0x5f4 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.6.364/xc8/avr/lib/avr5/memx-const/crtatmega328p.o
- .debug_info    0x00000000000005f4      0x46c main.o
+ .debug_info    0x00000000000005f4      0x4ae main.o
 
-.debug_abbrev   0x0000000000000000      0x672
+.debug_abbrev   0x0000000000000000      0x681
  *(.debug_abbrev)
  .debug_abbrev  0x0000000000000000      0x5a2 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.6.364/xc8/avr/lib/avr5/memx-const/crtatmega328p.o
- .debug_abbrev  0x00000000000005a2       0xd0 main.o
+ .debug_abbrev  0x00000000000005a2       0xdf main.o
 
-.debug_line     0x0000000000000000      0x387
+.debug_line     0x0000000000000000      0x381
  *(.debug_line .debug_line.* .debug_line_end)
  .debug_line    0x0000000000000000      0x137 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.6.364/xc8/avr/lib/avr5/memx-const/crtatmega328p.o
- .debug_line    0x0000000000000137      0x250 main.o
+ .debug_line    0x0000000000000137      0x24a main.o
 
 .debug_frame    0x0000000000000000       0x94
  *(.debug_frame)
@@ -384,61 +384,61 @@ LOAD data_init
  .note.gnu.avr.deviceinfo
                 0x0000000000000000       0x40 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.6.364/xc8/avr/lib/avr5/memx-const/crtatmega328p.o
 
-.text.lcd_data  0x0000000000000080       0x5e
+.text.lcd_data  0x0000000000000080       0x5c
  .text.lcd_data
-                0x0000000000000080       0x5e main.o
+                0x0000000000000080       0x5c main.o
                 0x0000000000000080                lcd_data
 
-.text.main      0x00000000000000de       0x26
- .text.main     0x00000000000000de       0x26 main.o
-                0x00000000000000de                main
+.text.main      0x00000000000000dc       0x26
+ .text.main     0x00000000000000dc       0x26 main.o
+                0x00000000000000dc                main
 
-.text.lcd_cmd   0x0000000000000104       0x20
- .text.lcd_cmd  0x0000000000000104       0x20 main.o
-                0x0000000000000104                lcd_cmd
+.text.lcd_cmd   0x0000000000000102       0x20
+ .text.lcd_cmd  0x0000000000000102       0x20 main.o
+                0x0000000000000102                lcd_cmd
 
-.text.lcd_init  0x0000000000000124       0x14
+.text.lcd_init  0x0000000000000122       0x14
  .text.lcd_init
-                0x0000000000000124       0x14 main.o
-                0x0000000000000124                lcd_init
+                0x0000000000000122       0x14 main.o
+                0x0000000000000122                lcd_init
 
 .text.lcd_off_cursor
-                0x0000000000000138        0xe
+                0x0000000000000136        0xe
  .text.lcd_off_cursor
-                0x0000000000000138        0xe main.o
-                0x0000000000000138                lcd_off_cursor
+                0x0000000000000136        0xe main.o
+                0x0000000000000136                lcd_off_cursor
 
 .text.lcd_on_cursor
-                0x0000000000000146        0xe
+                0x0000000000000144        0xe
  .text.lcd_on_cursor
-                0x0000000000000146        0xe main.o
-                0x0000000000000146                lcd_on_cursor
+                0x0000000000000144        0xe main.o
+                0x0000000000000144                lcd_on_cursor
 
-.text           0x0000000000000154        0x4
- .text          0x0000000000000154        0x4 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.6.364/xc8/avr/lib/avr5/memx-const/crtatmega328p.o
-                0x0000000000000154                __vector_22
-                0x0000000000000154                __vector_1
-                0x0000000000000154                __vector_24
-                0x0000000000000154                __vector_12
-                0x0000000000000154                __bad_interrupt
-                0x0000000000000154                __vector_6
-                0x0000000000000154                __vector_3
-                0x0000000000000154                __vector_23
-                0x0000000000000154                __vector_25
-                0x0000000000000154                __vector_11
-                0x0000000000000154                __vector_13
-                0x0000000000000154                __vector_17
-                0x0000000000000154                __vector_19
-                0x0000000000000154                __vector_7
-                0x0000000000000154                __vector_5
-                0x0000000000000154                __vector_4
-                0x0000000000000154                __vector_9
-                0x0000000000000154                __vector_2
-                0x0000000000000154                __vector_21
-                0x0000000000000154                __vector_15
-                0x0000000000000154                __vector_8
-                0x0000000000000154                __vector_14
-                0x0000000000000154                __vector_10
-                0x0000000000000154                __vector_16
-                0x0000000000000154                __vector_18
-                0x0000000000000154                __vector_20
+.text           0x0000000000000152        0x4
+ .text          0x0000000000000152        0x4 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.6.364/xc8/avr/lib/avr5/memx-const/crtatmega328p.o
+                0x0000000000000152                __vector_22
+                0x0000000000000152                __vector_1
+                0x0000000000000152                __vector_24
+                0x0000000000000152                __vector_12
+                0x0000000000000152                __bad_interrupt
+                0x0000000000000152                __vector_6
+                0x0000000000000152                __vector_3
+                0x0000000000000152                __vector_23
+                0x0000000000000152                __vector_25
+                0x0000000000000152                __vector_11
+                0x0000000000000152                __vector_13
+                0x0000000000000152                __vector_17
+                0x0000000000000152                __vector_19
+                0x0000000000000152                __vector_7
+                0x0000000000000152                __vector_5
+                0x0000000000000152                __vector_4
+                0x0000000000000152                __vector_9
+                0x0000000000000152                __vector_2
+                0x0000000000000152                __vector_21
+                0x0000000000000152                __vector_15
+                0x0000000000000152                __vector_8
+                0x0000000000000152                __vector_14
+                0x0000000000000152                __vector_10
+                0x0000000000000152                __vector_16
+                0x0000000000000152                __vector_18
+                0x0000000000000152                __vector_20
