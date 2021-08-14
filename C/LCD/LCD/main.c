@@ -29,9 +29,11 @@ void lcd_data(unsigned char data){
 	PORTB |= (1<<PORTB5);					// Set RS = 1
 	
 	for(int i=0; i<2 ;i++){					// Send two data (2x 4 bits)
-		if(i=0){
+		if(i==0){
 			PORTB &= 0x0F;						// Mask preservation 4 MSBs
 			PORTB |= data;						// Add data
+			
+			PORTB = PORTB >> 4;					// Shift right 4 Bits MSB >> LSB
 			
 			PORTB |= (1<<PORTB4);				// Set E = 1
 			delay_1();
@@ -55,9 +57,10 @@ void lcd_adress(unsigned char adress){
 	PORTB &= ~(1<<PORTB5);					// Set RS = 0
 	
 	for(int i=0; i<2 ;i++){					// Send two data (2x 4 bits)
-		if(i=0){
+		if(i==0){
 			PORTB &= 0x0F;						// Mask preservation 4 MSBs
-			PORTB |= adress;						// Add data
+			PORTB |= adress;					// Add data
+			PORTB = PORTB >> 4;					// Shift right 4 Bits MSB >> LSB
 			
 			PORTB |= (1<<PORTB4);				// Set E = 1
 			delay_1();
@@ -99,13 +102,13 @@ int main(void){
 	
 	DDRB = 0xff;
 	DDRC = 0xff;
-	PORTB = 0xFf;
+	PORTB = 0xF0;
 	PORTC = 0xAF;
 	
 	lcd_init();								//Init LCD
 	lcd_off_cursor();
 	lcd_on_cursor();
-	lcd_adress(0x8F);
+	//lcd_adress(0x8F);
 	lcd_data(0x35);
     
 }
