@@ -20,17 +20,24 @@ void lcd_cmd(unsigned char cmd){
 }
 
 void lcd_data(unsigned char data){
-	
-	PORTB &= 0xF0;
-	PORTB |= data;
-	
 	PORTC &= 0xFC;
-	PORTC |= 0x01;
-	for(int i = 0;i<255;i++){}//Delay
-	PORTC &=~ 0x01;
+	PORTC |= 0x02;
+	for(int i=0; i<2 ;i++){
+		PORTB &= 0xF0;
+		PORTB |= data;
+		
+		//PORTC &= 0xFC;
+		PORTC |= 0x03;
+		for(int j = 0;j<255;j++){}//Delay
+		PORTC &=~ 0x01;	
+	}
+	PORTC &=~ 0x02;	
 
 }
-
+/*void lcd_adress(unsigned char data){
+	lcd_cmd(data[0]);
+	lcd_cmd(data[4]);
+}*/
 void lcd_init(){
 	//RS = 0 D7:D4 = 0010
 	//RS = 0 D7:D4 = 1000
@@ -53,6 +60,8 @@ void lcd_on_cursor(){
 }
 
 
+
+
 int main(void)
 {
 	DDRB = 0xff;
@@ -61,7 +70,9 @@ int main(void)
 	PORTC = 0xAF;
 	lcd_init();
 	lcd_off_cursor();
-    while(1){
-		lcd_on_cursor();
-	}
+	lcd_cmd(0x02);
+	lcd_cmd(0x02);
+	lcd_on_cursor();
+	lcd_data(0xAF);
+    
 }
