@@ -12,6 +12,9 @@
 void delay_1(){
 	for(int i = 0;i<200;i++){}
 }
+void delay_2(){
+	for(int i = 0;i<1000;i++){}
+}
 void lcd_cmd(unsigned char cmd){
 	
 	PORTB &= 0xF0;								// Mask preservation 4 LSBs
@@ -128,6 +131,19 @@ void lcd_mod(int mod){
 			
 			lcd_adress(0x86);
 			lcd_data(0x4D);
+			
+			lcd_adress(0x87);
+			lcd_data(0x01);
+			
+			lcd_adress(0x89);
+			lcd_data(0x46);					//F
+			lcd_adress(0x8A);
+			lcd_data(0x3A);					//:
+			
+			lcd_adress(0x8E);
+			lcd_data(0x48);					//H
+			lcd_adress(0x8F);
+			lcd_data(0x7A);					//z
 			break;
 			
 		case 2:								//FM
@@ -136,6 +152,20 @@ void lcd_mod(int mod){
 			
 			lcd_adress(0x86);
 			lcd_data(0x4D);
+			
+			lcd_adress(0x87);
+			lcd_data(0x01);
+			lcd_adress(0x89);
+			
+			lcd_adress(0x89);
+			lcd_data(0x46);					//F
+			lcd_adress(0x8A);
+			lcd_data(0x3A);					//:
+			
+			lcd_adress(0x8E);
+			lcd_data(0x48);					//H
+			lcd_adress(0x8F);
+			lcd_data(0x7A);					//z
 			break;
 			
 		case 3:								//ASK
@@ -147,6 +177,16 @@ void lcd_mod(int mod){
 			
 			lcd_adress(0x87);
 			lcd_data(0x4B);
+			
+			lcd_adress(0x89);
+			lcd_data(0x54);					//T
+			lcd_adress(0x8A);
+			lcd_data(0x3A);					//:
+			
+			lcd_adress(0x8E);
+			lcd_data(0x62);					//b
+			lcd_adress(0x8F);
+			lcd_data(0x39);					//s
 			break;
 			
 		case 4:								//FSK
@@ -158,10 +198,50 @@ void lcd_mod(int mod){
 					
 			lcd_adress(0x87);
 			lcd_data(0x4B);
+			
+			lcd_adress(0x89);
+			lcd_data(0x54);					//T
+			lcd_adress(0x8A);
+			lcd_data(0x3A);					//:
+			
+			lcd_adress(0x8E);
+			lcd_data(0x62);					//b
+			lcd_adress(0x8F);
+			lcd_data(0x39);					//s
 			break;
 	}
 	
 }
+
+/*
+	lcd_adress(0x89)
+	lcd_data(0x54)			//T
+	lcd_adress(0x8A)
+	lcd_data(0x3A)			//:
+	
+	lcd_adress(0x89)
+	lcd_data(0x46)			//F
+	lcd_adress(0x8A)
+	lcd_data(0x3A)			//:
+	
+	lcd_adress(0x89)
+	lcd_data(0x50)			//P
+	lcd_adress(0x8A)
+	lcd_data(0x3A)			//:
+		
+	lcd_adress(0x8E)			
+	lcd_data(0x62)			//b
+	lcd_adress(0x8F)
+	lcd_data(0x39)			//s
+	
+	lcd_adress(0x8E)	
+	lcd_data(0x48)			//H
+	lcd_adress(0x8F)
+	lcd_data(0x7A)			//z
+	
+
+	
+*/
 
 int main(void){
 	
@@ -177,10 +257,10 @@ int main(void){
 	int i = 0;
 	while(1){
 		i++;
-		void lcd_mod(i);
-		delay_1();
-		delay_1();
-		if(i = 4){
+		lcd_mod(i);
+		delay_2();
+		delay_2();
+		if(i == 4){
 			i=0;
 		}
 	}
