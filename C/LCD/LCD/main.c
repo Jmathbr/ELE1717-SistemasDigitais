@@ -99,6 +99,27 @@ void lcd_on_cursor(){
 	lcd_cmd(0x0F);							//RS = 0 D7:D4 = 1100
 }
 
+void lcd_default(){
+											//Mod:
+	lcd_adress(0x80);
+	lcd_data(0x4D);
+	lcd_adress(0x81);
+	lcd_data(0x6F);
+	lcd_adress(0x82);
+	lcd_data(0x64);
+	lcd_adress(0x83);
+	lcd_data(0x3A);
+											//Msg:
+	lcd_adress(0xC0);
+	lcd_data(0x4D);
+	lcd_adress(0xC1);
+	lcd_data(0x73);
+	lcd_adress(0xC2);
+	lcd_data(0x67);
+	lcd_adress(0xC3);
+	lcd_data(0x3A);
+}
+
 int main(void){
 	
 	DDRB = 0xff;
@@ -109,7 +130,6 @@ int main(void){
 	lcd_init();								//Init LCD
 	lcd_off_cursor();
 	lcd_on_cursor();
-	//lcd_adress(0x8F);
-	lcd_data(0x35);
+	lcd_default();
     
 }
