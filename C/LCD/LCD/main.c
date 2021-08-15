@@ -443,7 +443,7 @@ void lcd_calc(){
 	lcd_adress(0XCB);
 	lcd_data(0x41);					//A
 	lcd_adress(0XCC);
-	lcd_data(0x4D);					//N
+	lcd_data(0x4E);					//N
 	lcd_adress(0XCD);
 	lcd_data(0x44);					//D
 	lcd_adress(0XCE);
