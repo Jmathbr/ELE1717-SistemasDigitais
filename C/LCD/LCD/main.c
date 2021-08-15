@@ -8,7 +8,7 @@
 #include <xc.h>
 #define F_CPU 8000000UL
 #include <avr/io.h>
-
+/*
 void delay_1();
 void delay_2();
 void lcd_cmd();
@@ -20,7 +20,8 @@ void lcd_mod();
 void lcd_off_cursor();
 void lcd_on_cursor();
 void lcd_port();
-
+*/
+void lcd_number(int n);
 void delay_1(){
 	for(int i = 0;i<200;i++){}
 }
@@ -345,15 +346,38 @@ void lcd_mod(int mod){
 	}
 }
 
-void lcd_port(uint16_t number){
-	uint16_t un = number/100;
-	for (int i = 0; i<number; i++){
-		
+void lcd_port(uint16_t n){
+	int un = 0;
+	int de = 0;
+	int ce = 0;
+	int number = n;
+	
+	while (1){
+		number = number-100;
+		ce++;
+		if (number<100){
+			break;
+		}
 	}
 	
+	while (1){
+		number = number-10;
+		de++;
+		if (number<10){
+			break;
+		}
+	}	
+	un = number;
+	
+	lcd_adress(0x8B);
+	lcd_number(ce);
+	lcd_adress(0x8C);
+	lcd_number(de);
+	lcd_adress(0x8D);
+	lcd_number(un);
 }
-// 8D UN 8C DEZ 8B CEN
-void lcd_number(uint16_t n){
+
+void lcd_number(int n){
 	switch(n){
 		case 0:
 			lcd_data(0x30);
