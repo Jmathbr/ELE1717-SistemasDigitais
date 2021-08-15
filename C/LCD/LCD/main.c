@@ -15,6 +15,7 @@ void delay_1();
 void delay_2();
 void lcd_off_cursor();
 void lcd_on_cursor();
+void lcd_calc();
 void lcd_number(int n);
 void lcd_port(uint16_t n);
 void lcd_data(unsigned char data);
@@ -353,34 +354,40 @@ void lcd_port(uint16_t n){
 	int number = n;
 	
 	while (1){
-		number = number-100;
-		ce++;
 		if (number<100){
 			break;
 		}
+		number = number-100;
+		ce++;
 	}
 	
 	while (1){
-		number = number-10;
-		de++;
 		if (number<10){
 			break;
 		}
+		number = number-10;
+		de++;
 	}	
 	un = number;
 	
 	lcd_adress(0x89);
 	lcd_data(0x50);					//P
+	
 	lcd_adress(0x8A);
 	lcd_data(0x3A);					//:
-	lcd_adress(0x8B);
+	
 	lcd_adress(0x8E);
 	lcd_data(0x48);					//H
+	
 	lcd_adress(0x8F);
 	lcd_data(0x7A);					//z
+	
+	lcd_adress(0x8B);
 	lcd_number(ce);
+	
 	lcd_adress(0x8C);
 	lcd_number(de);
+	
 	lcd_adress(0x8D);
 	lcd_number(un);
 }
@@ -420,6 +427,31 @@ void lcd_number(int n){
 	}
 }
 
+void lcd_calc(){
+	lcd_adress(0XC5);
+	lcd_data(0x43);					//C
+	lcd_adress(0XC6);
+	lcd_data(0x41);					//A
+	lcd_adress(0XC7);
+	lcd_data(0x4C);					//L
+	lcd_adress(0XC8);
+	lcd_data(0x43);					//C
+	lcd_adress(0XC9);
+	lcd_data(0x55);					//U
+	lcd_adress(0XCA);
+	lcd_data(0x4C);					//L
+	lcd_adress(0XCB);
+	lcd_data(0x41);					//A
+	lcd_adress(0XCC);
+	lcd_data(0x4D);					//N
+	lcd_adress(0XCD);
+	lcd_data(0x44);					//D
+	lcd_adress(0XCE);
+	lcd_data(0x4F);					//O
+	lcd_adress(0XCF);
+	lcd_data(0x01);					//null
+}
+
 int main(void){
 	
 	DDRB = 0xff;
@@ -429,18 +461,9 @@ int main(void){
 	
 	lcd_init();								//Init LCD
 	lcd_off_cursor();
-	lcd_on_cursor();
+	//lcd_on_cursor();
 	lcd_default();
-	int i = 0;
-	while(1){
-		i++;
-		lcd_mod(i);
-		delay_2();
-		delay_2();
-		if(i == 4){
-			i=0;
-		}
-	}
+	lcd_calc();
 }
 
 /*
