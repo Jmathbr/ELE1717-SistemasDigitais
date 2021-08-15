@@ -16,6 +16,7 @@ void delay_2();
 void lcd_off_cursor();
 void lcd_on_cursor();
 void lcd_calc();
+void lcd_R_analog(uint16_t adc_value);
 void lcd_number(int n);
 void lcd_port(uint16_t n);
 void lcd_data(unsigned char data);
@@ -450,6 +451,66 @@ void lcd_calc(){
 	lcd_data(0x4F);					//O
 	lcd_adress(0XCF);
 	lcd_data(0x01);					//null
+}
+
+
+void lcd_R_analog(uint16_t adc_value){
+	int un = 0;
+	int de = 0;
+	int ce = 0;
+	int number = adc_value;
+	
+	while (1){
+		if (number<100){
+			break;
+		}
+		number = number-100;
+		ce++;
+	}
+	
+	while (1){
+		if (number<10){
+			break;
+		}
+		number = number-10;
+		de++;
+	}
+	un = number;
+	
+	
+	lcd_adress(0xC5);
+	lcd_number(ce);
+	
+	lcd_adress(0xC6);
+	lcd_number(de);
+	
+	lcd_adress(0xC7);
+	lcd_number(un);
+	
+	lcd_adress(0XC8);
+	lcd_data(0x01);					//null
+	
+	lcd_adress(0XC9);
+	lcd_data(0x01);					//null
+	
+	lcd_adress(0XCA);
+	lcd_data(0x01);					//null
+	
+	lcd_adress(0XCB);
+	lcd_data(0x01);					//null
+	
+	lcd_adress(0XCC);
+	lcd_data(0x01);					//null
+	
+	lcd_adress(0XCD);
+	lcd_data(0x01);					//null
+	
+	lcd_adress(0XCE);
+	lcd_data(0x01);					//null
+	
+	lcd_adress(0XCF);
+	lcd_data(0x01);					//null
+	
 }
 
 int main(void){
