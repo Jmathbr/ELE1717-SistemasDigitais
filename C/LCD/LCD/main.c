@@ -9,6 +9,18 @@
 #define F_CPU 8000000UL
 #include <avr/io.h>
 
+void delay_1();
+void delay_2();
+void lcd_cmd();
+void lcd_adress();
+void lcd_data();
+void lcd_default();
+void lcd_init();
+void lcd_mod();
+void lcd_off_cursor();
+void lcd_on_cursor();
+void lcd_port();
+
 void delay_1(){
 	for(int i = 0;i<200;i++){}
 }
@@ -333,8 +345,47 @@ void lcd_mod(int mod){
 	}
 }
 
-void lcd_port(){
+void lcd_port(uint16_t number){
+	uint16_t un = number/100;
+	for (int i = 0; i<number; i++){
+		
+	}
 	
+}
+// 8D UN 8C DEZ 8B CEN
+void lcd_number(uint16_t n){
+	switch(n){
+		case 0:
+			lcd_data(0x30);
+			break;
+		case 1:
+			lcd_data(0x31);
+			break;
+		case 2:
+			lcd_data(0x32);
+			break;
+		case 3:
+			lcd_data(0x33);
+			break;
+		case 4:
+			lcd_data(0x34);
+			break;
+		case 5:
+			lcd_data(0x35);
+			break;
+		case 6:
+			lcd_data(0x36);
+			break;
+		case 7:
+			lcd_data(0x37);
+			break;
+		case 8:
+			lcd_data(0x38);
+			break;
+		case 9:
+			lcd_data(0x39);
+			break;
+	}
 }
 
 int main(void){
