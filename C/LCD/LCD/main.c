@@ -127,7 +127,7 @@ void lcd_mod(int mod){
 	switch(mod){
 		case 1:								//AM
 			lcd_adress(0x85);
-			lcd_data(0x4D);
+			lcd_data(0x41);
 			
 			lcd_adress(0x86);
 			lcd_data(0x4D);

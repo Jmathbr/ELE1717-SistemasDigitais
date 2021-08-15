@@ -351,7 +351,7 @@ Disassembly of section .text.lcd_mod:
   9e:	08 95       	ret
   a0:	85 e8       	ldi	r24, 0x85	; 133
   a2:	0e 94 ae 02 	call	0x55c	; 0x55c <lcd_adress>
-  a6:	8d e4       	ldi	r24, 0x4D	; 77
+  a6:	81 e4       	ldi	r24, 0x41	; 65
   a8:	0e 94 80 02 	call	0x500	; 0x500 <lcd_data>
   ac:	86 e8       	ldi	r24, 0x86	; 134
   ae:	0e 94 ae 02 	call	0x55c	; 0x55c <lcd_adress>
