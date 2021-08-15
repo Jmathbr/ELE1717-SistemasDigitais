@@ -12,6 +12,8 @@ Discarded input sections
  .bss           0x0000000000000000        0x0 main.o
  .text.delay_1  0x0000000000000000       0x10 main.o
  .text.delay_2  0x0000000000000000       0x12 main.o
+ .text.lcd_port
+                0x0000000000000000        0x2 main.o
  .text          0x0000000000000000        0x0 c:/program files/microchip/xc8/v2.31/avr/bin/../lib/gcc/avr/5.4.0/avr5/memx-const\libgcc.a(_exit.o)
  .data          0x0000000000000000        0x0 c:/program files/microchip/xc8/v2.31/avr/bin/../lib/gcc/avr/5.4.0/avr5/memx-const\libgcc.a(_exit.o)
  .bss           0x0000000000000000        0x0 c:/program files/microchip/xc8/v2.31/avr/bin/../lib/gcc/avr/5.4.0/avr5/memx-const\libgcc.a(_exit.o)
@@ -314,32 +316,32 @@ END GROUP
 .debug_sfnames
  *(.debug_sfnames)
 
-.debug_aranges  0x0000000000000000       0x70
+.debug_aranges  0x0000000000000000       0x78
  *(.debug_aranges)
  .debug_aranges
-                0x0000000000000000       0x70 main.o
+                0x0000000000000000       0x78 main.o
 
 .debug_pubnames
  *(.debug_pubnames)
 
-.debug_info     0x0000000000000000     0x172f
+.debug_info     0x0000000000000000     0x19ba
  *(.debug_info .gnu.linkonce.wi.*)
  .debug_info    0x0000000000000000      0x5f4 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.6.364/xc8/avr/lib/avr5/memx-const/crtatmega328p.o
- .debug_info    0x00000000000005f4     0x113b main.o
+ .debug_info    0x00000000000005f4     0x13c6 main.o
 
-.debug_abbrev   0x0000000000000000      0x693
+.debug_abbrev   0x0000000000000000      0x6a9
  *(.debug_abbrev)
  .debug_abbrev  0x0000000000000000      0x5a2 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.6.364/xc8/avr/lib/avr5/memx-const/crtatmega328p.o
- .debug_abbrev  0x00000000000005a2       0xf1 main.o
+ .debug_abbrev  0x00000000000005a2      0x107 main.o
 
-.debug_line     0x0000000000000000      0x79b
+.debug_line     0x0000000000000000      0x86c
  *(.debug_line .debug_line.* .debug_line_end)
  .debug_line    0x0000000000000000      0x137 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.6.364/xc8/avr/lib/avr5/memx-const/crtatmega328p.o
- .debug_line    0x0000000000000137      0x664 main.o
+ .debug_line    0x0000000000000137      0x735 main.o
 
-.debug_frame    0x0000000000000000       0xc4
+.debug_frame    0x0000000000000000       0xd4
  *(.debug_frame)
- .debug_frame   0x0000000000000000       0xc4 main.o
+ .debug_frame   0x0000000000000000       0xd4 main.o
 
 .debug_str      0x0000000000000000      0x208
  *(.debug_str)
@@ -368,9 +370,9 @@ END GROUP
 .debug_pubtypes
  *(.debug_pubtypes)
 
-.debug_ranges   0x0000000000000000       0x60
+.debug_ranges   0x0000000000000000       0x68
  *(.debug_ranges)
- .debug_ranges  0x0000000000000000       0x60 main.o
+ .debug_ranges  0x0000000000000000       0x68 main.o
 
 .debug_macro
  *(.debug_macro)
@@ -383,77 +385,77 @@ LOAD data_init
  .note.gnu.avr.deviceinfo
                 0x0000000000000000       0x40 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.6.364/xc8/avr/lib/avr5/memx-const/crtatmega328p.o
 
-.text.lcd_mod   0x0000000000000080      0x35e
- .text.lcd_mod  0x0000000000000080      0x35e main.o
+.text.lcd_mod   0x0000000000000080      0x41e
+ .text.lcd_mod  0x0000000000000080      0x41e main.o
                 0x0000000000000080                lcd_mod
 
 .text.lcd_default
-                0x00000000000003de       0x62
+                0x000000000000049e       0x62
  .text.lcd_default
-                0x00000000000003de       0x62 main.o
-                0x00000000000003de                lcd_default
+                0x000000000000049e       0x62 main.o
+                0x000000000000049e                lcd_default
 
-.text.lcd_data  0x0000000000000440       0x5c
+.text.lcd_data  0x0000000000000500       0x5c
  .text.lcd_data
-                0x0000000000000440       0x5c main.o
-                0x0000000000000440                lcd_data
+                0x0000000000000500       0x5c main.o
+                0x0000000000000500                lcd_data
 
 .text.lcd_adress
-                0x000000000000049c       0x5c
+                0x000000000000055c       0x5c
  .text.lcd_adress
-                0x000000000000049c       0x5c main.o
-                0x000000000000049c                lcd_adress
+                0x000000000000055c       0x5c main.o
+                0x000000000000055c                lcd_adress
 
-.text.main      0x00000000000004f8       0x38
- .text.main     0x00000000000004f8       0x38 main.o
-                0x00000000000004f8                main
+.text.main      0x00000000000005b8       0x38
+ .text.main     0x00000000000005b8       0x38 main.o
+                0x00000000000005b8                main
 
-.text.lcd_cmd   0x0000000000000530       0x20
- .text.lcd_cmd  0x0000000000000530       0x20 main.o
-                0x0000000000000530                lcd_cmd
+.text.lcd_cmd   0x00000000000005f0       0x20
+ .text.lcd_cmd  0x00000000000005f0       0x20 main.o
+                0x00000000000005f0                lcd_cmd
 
-.text.lcd_init  0x0000000000000550       0x14
+.text.lcd_init  0x0000000000000610       0x14
  .text.lcd_init
-                0x0000000000000550       0x14 main.o
-                0x0000000000000550                lcd_init
+                0x0000000000000610       0x14 main.o
+                0x0000000000000610                lcd_init
 
 .text.lcd_off_cursor
-                0x0000000000000564        0xe
+                0x0000000000000624        0xe
  .text.lcd_off_cursor
-                0x0000000000000564        0xe main.o
-                0x0000000000000564                lcd_off_cursor
+                0x0000000000000624        0xe main.o
+                0x0000000000000624                lcd_off_cursor
 
 .text.lcd_on_cursor
-                0x0000000000000572        0xe
+                0x0000000000000632        0xe
  .text.lcd_on_cursor
-                0x0000000000000572        0xe main.o
-                0x0000000000000572                lcd_on_cursor
+                0x0000000000000632        0xe main.o
+                0x0000000000000632                lcd_on_cursor
 
-.text           0x0000000000000580        0x4
- .text          0x0000000000000580        0x4 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.6.364/xc8/avr/lib/avr5/memx-const/crtatmega328p.o
-                0x0000000000000580                __vector_22
-                0x0000000000000580                __vector_1
-                0x0000000000000580                __vector_24
-                0x0000000000000580                __vector_12
-                0x0000000000000580                __bad_interrupt
-                0x0000000000000580                __vector_6
-                0x0000000000000580                __vector_3
-                0x0000000000000580                __vector_23
-                0x0000000000000580                __vector_25
-                0x0000000000000580                __vector_11
-                0x0000000000000580                __vector_13
-                0x0000000000000580                __vector_17
-                0x0000000000000580                __vector_19
-                0x0000000000000580                __vector_7
-                0x0000000000000580                __vector_5
-                0x0000000000000580                __vector_4
-                0x0000000000000580                __vector_9
-                0x0000000000000580                __vector_2
-                0x0000000000000580                __vector_21
-                0x0000000000000580                __vector_15
-                0x0000000000000580                __vector_8
-                0x0000000000000580                __vector_14
-                0x0000000000000580                __vector_10
-                0x0000000000000580                __vector_16
-                0x0000000000000580                __vector_18
-                0x0000000000000580                __vector_20
+.text           0x0000000000000640        0x4
+ .text          0x0000000000000640        0x4 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.6.364/xc8/avr/lib/avr5/memx-const/crtatmega328p.o
+                0x0000000000000640                __vector_22
+                0x0000000000000640                __vector_1
+                0x0000000000000640                __vector_24
+                0x0000000000000640                __vector_12
+                0x0000000000000640                __bad_interrupt
+                0x0000000000000640                __vector_6
+                0x0000000000000640                __vector_3
+                0x0000000000000640                __vector_23
+                0x0000000000000640                __vector_25
+                0x0000000000000640                __vector_11
+                0x0000000000000640                __vector_13
+                0x0000000000000640                __vector_17
+                0x0000000000000640                __vector_19
+                0x0000000000000640                __vector_7
+                0x0000000000000640                __vector_5
+                0x0000000000000640                __vector_4
+                0x0000000000000640                __vector_9
+                0x0000000000000640                __vector_2
+                0x0000000000000640                __vector_21
+                0x0000000000000640                __vector_15
+                0x0000000000000640                __vector_8
+                0x0000000000000640                __vector_14
+                0x0000000000000640                __vector_10
+                0x0000000000000640                __vector_16
+                0x0000000000000640                __vector_18
+                0x0000000000000640                __vector_20

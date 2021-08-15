@@ -2,7 +2,7 @@
  * main.c
  *
  * Created: 8/13/2021 7:15:26 PM
- *  Author: joaom
+ *  Author: Joao Matheus Bernardo Resende && Wesley Brito
  */ 
 
 #include <xc.h>
@@ -158,6 +158,23 @@ void lcd_mod(int mod){
 			lcd_data(0xB0);					//-
 			lcd_adress(0XC7);
 			lcd_data(0xB0);					//-
+			lcd_adress(0XC8);
+			lcd_data(0x01);					//
+			lcd_adress(0XC9);
+			lcd_data(0x01);					//
+			lcd_adress(0XCA);
+			lcd_data(0x01);					//
+			lcd_adress(0XCB);
+			lcd_data(0x01);					//
+			lcd_adress(0XCC);
+			lcd_data(0x01);					//
+			lcd_adress(0XCD);
+			lcd_data(0x01);					//
+			lcd_adress(0XCE);
+			lcd_data(0x01);					//
+			lcd_adress(0XCF);
+			lcd_data(0x01);					//
+			
 			break;
 			
 		case 2:								//FM
@@ -194,6 +211,22 @@ void lcd_mod(int mod){
 			lcd_data(0xB0);					//-
 			lcd_adress(0XC7);
 			lcd_data(0xB0);					//-
+			lcd_adress(0XC8);
+			lcd_data(0x01);					//
+			lcd_adress(0XC9);
+			lcd_data(0x01);					//
+			lcd_adress(0XCA);
+			lcd_data(0x01);					//
+			lcd_adress(0XCB);
+			lcd_data(0x01);					//
+			lcd_adress(0XCC);
+			lcd_data(0x01);					//
+			lcd_adress(0XCD);
+			lcd_data(0x01);					//
+			lcd_adress(0XCE);
+			lcd_data(0x01);					//
+			lcd_adress(0XCF);
+			lcd_data(0x01);					//
 			break;
 			
 		case 3:								//ASK
@@ -298,7 +331,33 @@ void lcd_mod(int mod){
 			lcd_data(0xB0);					//-
 			break;
 	}
+}
+
+void lcd_port(){
 	
+}
+
+int main(void){
+	
+	DDRB = 0xff;
+	DDRC = 0xff;
+	PORTB = 0xF0;
+	PORTC = 0xAF;
+	
+	lcd_init();								//Init LCD
+	lcd_off_cursor();
+	lcd_on_cursor();
+	lcd_default();
+	int i = 0;
+	while(1){
+		i++;
+		lcd_mod(i);
+		delay_2();
+		delay_2();
+		if(i == 4){
+			i=0;
+		}
+	}
 }
 
 /*
@@ -368,28 +427,3 @@ void lcd_mod(int mod){
 	lcd_adress(0XCF);
 	lcd_data(0xB0);					//-
 */
-
-int main(void){
-	
-	DDRB = 0xff;
-	DDRC = 0xff;
-	PORTB = 0xF0;
-	PORTC = 0xAF;
-	
-	lcd_init();								//Init LCD
-	lcd_off_cursor();
-	lcd_on_cursor();
-	lcd_default();
-	int i = 0;
-	while(1){
-		i++;
-		lcd_mod(i);
-		delay_2();
-		delay_2();
-		if(i == 4){
-			i=0;
-		}
-	}
-		
-    
-}
