@@ -23,7 +23,7 @@ void lcd_data(unsigned char data);
 void lcd_cmd(unsigned char cmd);
 void lcd_adress(unsigned char adress);
 void lcd_mod(int mod);
-void lcd_R_digit(char n[8]);
+void lcd_R_digit(char n[8], float tb);
 
 void delay_1(){
 	for(int i = 0;i<200;i++){}
@@ -514,48 +514,77 @@ void lcd_R_analog(uint16_t adc_value){
 	
 }
 
-void lcd_R_digit(char n[8]){
-	/*char i0 = {0x4+n[0]};
-	char i1 = {0x4+n[1]};
-	char i2 = {0x4+n[2]};
-	char i3 = {0x4+n[3]};
-	char i4 = {0x4+n[4]};
-	char i5 = {0x4+n[5]};
-	char i6 = {0x4+n[6]};
-	char i7 = {0x4+n[7]};		
-	*/
+void lcd_R_digit(char n[8], float tb ){
+	float un = 0;
+	float de = 0;
+	float ce = 0;
+	float number = tb;
+	
+	while (1){
+		if (number<100){
+			break;
+		}
+		number = number-100;
+		ce++;
+	}
+	
+	while (1){
+		if (number<10){
+			break;
+		}
+		number = number-10;
+		de++;
+	}
+	un = number;
+
 	lcd_adress(0XC5);
-	lcd_data(0x4+n[0]);					//-
+	lcd_data(n[0]);					//-
 	
 	lcd_adress(0XC6);
-	lcd_data(0x4+n[1]);					//-
+	lcd_data(n[1]);					//-
 	
 	lcd_adress(0XC7);
 	lcd_data(0x2E);					//.
 	
 	lcd_adress(0XC8);
-	lcd_data(0x4+n[2]);					//-
+	lcd_data(n[2]);					//-
 	
 	lcd_adress(0XC9);
-	lcd_data(0x4+n[3]);					//-
+	lcd_data(n[3]);					//-
 	
 	lcd_adress(0XCA);
 	lcd_data(0x2E);					//.
 	
 	lcd_adress(0XCB);
-	lcd_data(0x4+n[4]);					//-
+	lcd_data(n[4]);					//-
 	
 	lcd_adress(0XCC);
-	lcd_data(0x4+n[5]);					//-
+	lcd_data(n[5]);					//-
 	
 	lcd_adress(0XCD);
 	lcd_data(0x2E);					//.
 	
 	lcd_adress(0XCE);
-	lcd_data(0x4+n[6]);					//-
+	lcd_data(n[6]);					//-
 	
 	lcd_adress(0XCF);
-	lcd_data(0x4+n[7]);					//-
+	lcd_data(n[7]);					//-
+	
+	lcd_adress(0x89);
+	lcd_data(0x54);					//T
+	lcd_adress(0x8A);
+	lcd_data(0x3A);					//:
+	
+	lcd_adress(0x8B);
+	lcd_number(ce);
+	
+	lcd_adress(0x8C);
+	lcd_number(de);
+	
+	lcd_adress(0x8D);
+	lcd_number(un);
+	
+	
 	
 }
 
